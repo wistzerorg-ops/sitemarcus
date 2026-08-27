@@ -62,6 +62,7 @@
         .item-detalhes h4 { font-size: 14px; margin-bottom: 4px; color: #333; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 300px; }
         .item-detalhes p { font-size: 13px; color: #00a650; font-weight: 600; }
         .lista-vazia { text-align: center; color: #999; padding: 40px 0; font-size: 14px; }
+        .loading { text-align: center; color: #999; padding: 20px; }
         
         @media (min-width: 768px) { 
             .header-content { flex-direction: row; align-items: center; } 
@@ -79,7 +80,7 @@
     <header>
         <div class="header-content">
             <div class="logo-container">
-                <img src="https://logopng.com.br/logos/mercado-livre-87.svg?dpl=dpl_83xWKUBiCCc88zqvgK1XNSG8JXgj" alt="Mercado Livre Logo@clipartmax.com" alt="Mercado Livre" class="logo-img">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/d/d4/MercadoLivre_logo.svg" alt="Mercado Livre" class="logo-img">
             </div>
             <div class="search-bar">
                 Buscar produtos, marcas e muito mais…
@@ -136,7 +137,7 @@
                 
                 <h3 style="font-size: 16px; margin-top: 30px;">Produtos Cadastrados</h3>
                 <div id="lista-produtos">
-                    <div class="lista-vazia">Nenhum produto cadastrado.</div>
+                    <div class="lista-vazia">Carregando...</div>
                 </div>
                 
                 <button class="btn-secondary" onclick="fecharModal()">Fechar Painel</button>
@@ -153,39 +154,47 @@
     </a>
 
     <script>
-        // Funções de armazenamento local
-        function salvarProdutos(produtos) {
-            localStorage.setItem('produtos_afiliados', JSON.stringify(produtos));
-            // Dispara evento para atualizar a vitrine
-            carregarProdutos();
+        // URL do servidor JSON (substitua pelo seu link do JSONBin.io)
+        const API_URL = 'https://api.jsonbin.io/v3/b/SEU_BIN_ID';
+        const API_KEY = 'SUA_API_KEY';
+        
+        // Função para carregar produtos do servidor
+        async function carregarProdutos() {
+            try {
+                const response = await fetch(API_URL, {
+                    headers: {
+                        'X-Master-Key': API_KEY
+                    }
+                });
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    const produtos = data.record || [];
+                    exibirProdutos(produtos);
+                } else {
+                    exibirProdutos([]);
+                }
+            } catch (error) {
+                console.error('Erro ao carregar produtos:', error);
+                document.getElementById('produtos').innerHTML = '<p style="grid-column: 1/-1; color: #999; text-align: center; margin-top: 20px;">Erro ao carregar produtos.</p>';
+            }
         }
-
-        function obterProdutos() {
-            const dados = localStorage.getItem('produtos_afiliados');
-            return dados ? JSON.parse(dados) : [];
-        }
-
-        function formatarPreco(valor) {
-            return Number(valor).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-        }
-
-        // Carregar produtos na vitrine
-        function carregarProdutos() {
+        
+        // Função para exibir produtos na vitrine
+        function exibirProdutos(produtos) {
             const container = document.getElementById('produtos');
-            const produtos = obterProdutos();
-            
             container.innerHTML = '';
             
-            if (produtos.length === 0) {
+            if (!produtos || produtos.length === 0) {
                 container.innerHTML = '<p style="grid-column: 1/-1; color: #999; text-align: center; margin-top: 20px;">Nenhum produto cadastrado.</p>';
                 return;
             }
-
+            
             produtos.slice().reverse().forEach((p, index) => {
                 container.innerHTML += `
                     <div class="product-card" onclick="window.open('${p.link}', '_blank')" style="animation-delay: ${index * 0.1}s">
                         <div class="img-wrapper">
-                            <img src="${p.imagem}" alt="${p.nome}">
+                            <img src="${p.imagem}" alt="${p.nome}" onerror="this.src='https://via.placeholder.com/300x300?text=Sem+Imagem'">
                             <div class="hover-desc">${p.descricao}</div>
                         </div>
                         <div class="info">
@@ -196,10 +205,37 @@
                     </div>
                 `;
             });
-
+            
             iniciarAnimacaoScroll();
         }
-
+        
+        // Função para salvar produtos no servidor
+        async function salvarProdutos(produtos) {
+            try {
+                const response = await fetch(API_URL, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-Master-Key': API_KEY
+                    },
+                    body: JSON.stringify(produtos)
+                });
+                
+                if (response.ok) {
+                    carregarProdutos();
+                    return true;
+                }
+                return false;
+            } catch (error) {
+                console.error('Erro ao salvar produtos:', error);
+                return false;
+            }
+        }
+        
+        function formatarPreco(valor) {
+            return Number(valor).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+        }
+        
         function iniciarAnimacaoScroll() {
             const cards = document.querySelectorAll('.product-card');
             const observer = new IntersectionObserver((entries) => {
@@ -210,19 +246,21 @@
                     }
                 });
             }, { threshold: 0.05 });
-
+            
             cards.forEach(card => observer.observe(card));
         }
-
+        
         // Funções do Admin
         function abrirModal() {
             document.getElementById('modalAdmin').classList.add('active');
         }
-
+        
         function fecharModal() {
             document.getElementById('modalAdmin').classList.remove('active');
+            document.getElementById('login-area').style.display = 'block';
+            document.getElementById('admin-area').style.display = 'none';
         }
-
+        
         function entrar() {
             const senha = document.getElementById('senha').value;
             if (senha === 'marcus') {
@@ -233,8 +271,8 @@
                 alert('Acesso negado. Senha incorreta.');
             }
         }
-
-        function adicionar(e) {
+        
+        async function adicionar(e) {
             e.preventDefault();
             const btn = document.getElementById('btn-submit');
             btn.innerText = "Salvando...";
@@ -247,74 +285,116 @@
                 link: document.getElementById('link').value,
                 imagem: document.getElementById('imagem').value
             };
-
-            const produtos = obterProdutos();
-            produtos.push(novo);
-            salvarProdutos(produtos);
             
-            e.target.reset();
-            btn.innerText = "Cadastrar Produto";
-            carregarListaAdmin();
-            alert("Produto salvo com sucesso!");
-        }
-
-        function remover(id) {
-            if (confirm('Tem certeza que deseja apagar este produto?')) {
-                let produtos = obterProdutos();
-                produtos = produtos.filter(p => p.id !== id);
-                salvarProdutos(produtos);
-                carregarListaAdmin();
-            }
-        }
-
-        function carregarListaAdmin() {
-            const container = document.getElementById('lista-produtos');
-            const produtos = obterProdutos();
-            
-            if (produtos.length === 0) {
-                container.innerHTML = '<div class="lista-vazia">Nenhum produto cadastrado.</div>';
-                return;
-            }
-
-            container.innerHTML = '';
-            
-            produtos.slice().reverse().forEach((p) => {
-                const precoFormatado = formatarPreco(p.valor);
+            try {
+                // Carregar produtos atuais
+                const response = await fetch(API_URL, {
+                    headers: {
+                        'X-Master-Key': API_KEY
+                    }
+                });
                 
-                container.innerHTML += `
-                    <div class="item-produto">
-                        <div class="item-info">
-                            <img src="${p.imagem}" alt="Produto">
-                            <div class="item-detalhes">
-                                <h4>${p.nome}</h4>
-                                <p>${precoFormatado}</p>
-                            </div>
-                        </div>
-                        <button class="btn-remover" onclick="remover('${p.id}')">Remover</button>
-                    </div>
-                `;
-            });
+                if (response.ok) {
+                    const data = await response.json();
+                    const produtos = data.record || [];
+                    produtos.push(novo);
+                    
+                    const salvou = await salvarProdutos(produtos);
+                    
+                    if (salvou) {
+                        e.target.reset();
+                        btn.innerText = "Cadastrar Produto";
+                        carregarListaAdmin();
+                        alert("Produto salvo com sucesso!");
+                    } else {
+                        btn.innerText = "Cadastrar Produto";
+                        alert("Erro ao salvar produto.");
+                    }
+                }
+            } catch (error) {
+                btn.innerText = "Cadastrar Produto";
+                alert("Erro ao salvar: " + error);
+            }
         }
-
+        
+        async function remover(id) {
+            if (confirm('Tem certeza que deseja apagar este produto?')) {
+                try {
+                    const response = await fetch(API_URL, {
+                        headers: {
+                            'X-Master-Key': API_KEY
+                        }
+                    });
+                    
+                    if (response.ok) {
+                        const data = await response.json();
+                        let produtos = data.record || [];
+                        produtos = produtos.filter(p => p.id !== id);
+                        
+                        await salvarProdutos(produtos);
+                        carregarListaAdmin();
+                    }
+                } catch (error) {
+                    alert("Erro ao remover produto.");
+                }
+            }
+        }
+        
+        async function carregarListaAdmin() {
+            const container = document.getElementById('lista-produtos');
+            
+            try {
+                const response = await fetch(API_URL, {
+                    headers: {
+                        'X-Master-Key': API_KEY
+                    }
+                });
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    const produtos = data.record || [];
+                    
+                    if (produtos.length === 0) {
+                        container.innerHTML = '<div class="lista-vazia">Nenhum produto cadastrado.</div>';
+                        return;
+                    }
+                    
+                    container.innerHTML = '';
+                    
+                    produtos.slice().reverse().forEach((p) => {
+                        const precoFormatado = formatarPreco(p.valor);
+                        
+                        container.innerHTML += `
+                            <div class="item-produto">
+                                <div class="item-info">
+                                    <img src="${p.imagem}" alt="Produto" onerror="this.src='https://via.placeholder.com/60x60?text=Sem+Imagem'">
+                                    <div class="item-detalhes">
+                                        <h4>${p.nome}</h4>
+                                        <p>${precoFormatado}</p>
+                                    </div>
+                                </div>
+                                <button class="btn-remover" onclick="remover('${p.id}')">Remover</button>
+                            </div>
+                        `;
+                    });
+                }
+            } catch (error) {
+                container.innerHTML = '<div class="lista-vazia">Erro ao carregar produtos.</div>';
+            }
+        }
+        
         // Fechar modal ao clicar fora
         document.getElementById('modalAdmin').addEventListener('click', function(e) {
             if (e.target === this) {
                 fecharModal();
             }
         });
-
+        
         // Carregar produtos ao iniciar
         carregarProdutos();
-
-        // Atualizar produtos quando houver mudança no localStorage (para outras abas)
-        window.addEventListener('storage', function(e) {
-            if (e.key === 'produtos_afiliados') {
-                carregarProdutos();
-                if (document.getElementById('admin-area').style.display === 'block') {
-                    carregarListaAdmin();
-                }
-            }
-        });
+        
+        // Atualizar produtos a cada 30 segundos
+        setInterval(carregarProdutos, 30000);
     </script>
 </body>
 </html>
