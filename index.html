@@ -5,239 +5,72 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mercado Afiliado</title>
     <style>
-        /* Variáveis e Fontes Oficiais */
-        :root {
-            --ml-yellow: #ffe600;
-            --ml-bg: #ebebeb;
-            --ml-text: #333333;
-            --ml-text-light: #666666;
-            --ml-blue: #3483fa;
-            --ml-green: #00a650;
-        }
-        
-        @font-face {
-            font-family: 'Proxima Nova';
-            src: local('Proxima Nova'), local('Arial');
-        }
-
+        :root { --ml-yellow: #ffe600; --ml-bg: #ebebeb; --ml-text: #333333; --ml-text-light: #666666; --ml-blue: #3483fa; --ml-green: #00a650; }
+        @font-face { font-family: 'Proxima Nova'; src: local('Proxima Nova'), local('Arial'); }
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: "Proxima Nova", -apple-system, sans-serif; background-color: var(--ml-bg); color: var(--ml-text); }
         
-        body { 
-            font-family: "Proxima Nova", -apple-system, "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif; 
-            background-color: var(--ml-bg); 
-            color: var(--ml-text); 
-            -webkit-font-smoothing: antialiased;
-        }
-
-        /* Cabeçalho Mercado Livre */
-        header {
-            background-color: var(--ml-yellow);
-            padding: 8px 10px;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 1px 1px rgba(0,0,0,0.1);
-        }
+        /* Header */
+        header { background-color: var(--ml-yellow); padding: 8px 10px; position: sticky; top: 0; z-index: 100; box-shadow: 0 1px 1px rgba(0,0,0,0.1); }
+        .header-content { max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
+        .logo-container { display: flex; align-items: center; }
+        .logo-img { height: 45px; }
+        .search-bar { background: #fff; padding: 10px 15px; border-radius: 2px; box-shadow: 0 1px 2px 0 rgba(0,0,0,.2); font-size: 16px; color: #999; display: flex; align-items: center; justify-content: space-between; }
         
-        .header-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .logo-container {
-            display: flex;
-            align-items: center;
-        }
-
-        .logo-img {
-            height: 60px;
-        }
-
-        .search-bar {
-            background: #fff;
-            padding: 10px 15px;
-            border-radius: 2px;
-            box-shadow: 0 1px 2px 0 rgba(0,0,0,.2);
-            font-size: 16px;
-            color: #999;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        /* Grid e Container Principal */
-        main { 
-            max-width: 1200px; 
-            margin: 0 auto; 
-            padding: 20px 10px 80px 10px; 
-        }
-
-        h2 { 
-            font-size: 24px; 
-            font-weight: 400; 
-            margin-bottom: 24px; 
-            color: var(--ml-text-light); 
-        }
-
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-        }
-
-        /* Card do Produto */
-        .product-card {
-            background: #fff;
-            border-radius: 4px;
-            overflow: hidden;
-            box-shadow: 0 1px 2px 0 rgba(0,0,0,.12);
-            position: relative;
-            text-decoration: none;
-            color: inherit;
-            display: flex;
-            flex-direction: column;
-            opacity: 0;
-            transform: translateY(40px);
-            transition: box-shadow 0.3s ease-out, transform 0.3s ease-out;
-            cursor: pointer;
-        }
-
-        .product-card:hover {
-            box-shadow: 0 7px 16px 0 rgba(0,0,0,.1);
-        }
-
-        .product-card.show {
-            animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        }
-
-        @keyframes slideUp {
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Imagem e Hover de Descrição */
-        .img-wrapper {
-            width: 100%;
-            aspect-ratio: 1;
-            position: relative;
-            border-bottom: 1px solid #eee;
-            overflow: hidden;
-        }
-
-        .img-wrapper img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            padding: 15px;
-            background: #fff;
-        }
-
-        .hover-desc {
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(52, 131, 250, 0.95);
-            color: #fff;
-            padding: 20px;
-            font-size: 14px;
-            line-height: 1.4;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            pointer-events: none;
-        }
-
-        .product-card:hover .hover-desc {
-            opacity: 1;
-        }
-
-        /* Informações do Produto */
-        .info {
-            padding: 12px 16px;
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-        }
-
-        .price {
-            font-size: 24px;
-            font-weight: 400;
-            color: var(--ml-text);
-        }
-
-        .frete {
-            color: var(--ml-green);
-            font-size: 14px;
-            font-weight: 600;
-        }
-
-        .title {
-            font-size: 14px;
-            color: var(--ml-text-light);
-            font-weight: 400;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-            margin-top: 4px;
-        }
-
-        /* Botões Flutuantes (Admin e TikTok) */
-        .float-btn {
-            position: fixed;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-            z-index: 1000;
-            text-decoration: none;
-            transition: transform 0.2s;
-        }
+        /* Main */
+        main { max-width: 1200px; margin: 0 auto; padding: 20px 10px 80px 10px; }
+        h2 { font-size: 24px; font-weight: 400; margin-bottom: 24px; color: var(--ml-text-light); }
+        .products-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+        .product-card { background: #fff; border-radius: 4px; overflow: hidden; box-shadow: 0 1px 2px 0 rgba(0,0,0,.12); position: relative; text-decoration: none; color: inherit; display: flex; flex-direction: column; opacity: 0; transform: translateY(40px); transition: box-shadow 0.3s ease-out, transform 0.3s ease-out; cursor: pointer; }
+        .product-card:hover { box-shadow: 0 7px 16px 0 rgba(0,0,0,.1); }
+        .product-card.show { animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        @keyframes slideUp { to { opacity: 1; transform: translateY(0); } }
+        .img-wrapper { width: 100%; aspect-ratio: 1; position: relative; border-bottom: 1px solid #eee; overflow: hidden; }
+        .img-wrapper img { width: 100%; height: 100%; object-fit: contain; padding: 15px; background: #fff; }
+        .hover-desc { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(52, 131, 250, 0.95); color: #fff; padding: 20px; font-size: 14px; line-height: 1.4; display: flex; align-items: center; justify-content: center; text-align: center; opacity: 0; transition: opacity 0.3s ease; pointer-events: none; }
+        .product-card:hover .hover-desc { opacity: 1; }
+        .info { padding: 12px 16px; display: flex; flex-direction: column; gap: 4px; }
+        .price { font-size: 24px; font-weight: 400; color: var(--ml-text); }
+        .frete { color: var(--ml-green); font-size: 14px; font-weight: 600; }
+        .title { font-size: 14px; color: var(--ml-text-light); font-weight: 400; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; margin-top: 4px; }
         
+        /* Botões Flutuantes */
+        .float-btn { position: fixed; width: 50px; height: 50px; border-radius: 50%; display: flex; justify-content: center; align-items: center; box-shadow: 0 4px 10px rgba(0,0,0,0.3); z-index: 1000; text-decoration: none; transition: transform 0.2s; cursor: pointer; border: none; }
         .float-btn:hover { transform: scale(1.1); }
-
-        .btn-admin {
-            bottom: 20px;
-            left: 20px;
-            background: #fff;
-            color: #666;
-        }
-
-        .btn-tiktok {
-            bottom: 20px;
-            right: 20px;
-            background: #000;
-            color: #fff;
-        }
-
+        .btn-admin { bottom: 20px; left: 20px; background: #fff; color: #666; }
+        .btn-tiktok { bottom: 20px; right: 20px; background: #000; color: #fff; }
         .float-btn svg { width: 24px; height: 24px; fill: currentColor; }
-
-        /* Responsivo: Tablet e PC */
-        @media (min-width: 768px) {
-            .header-content {
-                flex-direction: row;
-                align-items: center;
-            }
-            .search-bar {
-                flex: 1;
-                margin-left: 30px;
-            }
-            .products-grid {
-                grid-template-columns: repeat(4, 1fr);
-                gap: 16px;
-            }
+        
+        /* Admin Modal */
+        .modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 2000; display: none; align-items: center; justify-content: center; }
+        .modal-overlay.active { display: flex; }
+        .modal { background: #fff; border-radius: 8px; padding: 30px; max-width: 600px; width: 90%; max-height: 90vh; overflow-y: auto; box-shadow: 0 10px 40px rgba(0,0,0,0.3); }
+        .modal h3 { font-size: 20px; margin-bottom: 20px; color: #333; }
+        .form-group { margin-bottom: 16px; }
+        label { display: block; margin-bottom: 6px; font-size: 13px; font-weight: 600; color: #666; }
+        input, textarea { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 6px; font-size: 14px; transition: border 0.2s; background: #fafafa; font-family: inherit; }
+        input:focus, textarea:focus { border-color: #3483fa; outline: none; background: #fff; box-shadow: 0 0 0 3px rgba(52,131,250,0.1); }
+        button { background: #3483fa; color: white; border: none; border-radius: 6px; padding: 12px 20px; font-weight: 600; cursor: pointer; transition: background 0.2s; width: 100%; font-size: 15px; }
+        button:hover { background: #2968c8; }
+        .btn-secondary { background: #f0f0f0; color: #333; margin-top: 10px; }
+        .btn-secondary:hover { background: #e0e0e0; }
+        .btn-remover { background: #ffe6e6; color: #cc0000; width: auto; padding: 8px 12px; font-size: 12px; border-radius: 4px; }
+        .btn-remover:hover { background: #ffcccc; }
+        .item-produto { display: flex; align-items: center; justify-content: space-between; padding: 15px; border: 1px solid #eee; border-radius: 6px; margin-bottom: 10px; }
+        .item-info { display: flex; align-items: center; gap: 15px; overflow: hidden; flex: 1; }
+        .item-info img { width: 60px; height: 60px; object-fit: contain; border-radius: 4px; border: 1px solid #eee; }
+        .item-detalhes h4 { font-size: 14px; margin-bottom: 4px; color: #333; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 300px; }
+        .item-detalhes p { font-size: 13px; color: #00a650; font-weight: 600; }
+        .lista-vazia { text-align: center; color: #999; padding: 40px 0; font-size: 14px; }
+        
+        @media (min-width: 768px) { 
+            .header-content { flex-direction: row; align-items: center; } 
+            .search-bar { flex: 1; margin-left: 30px; } 
+            .products-grid { grid-template-columns: repeat(4, 1fr); gap: 16px; } 
+            .modal { max-width: 700px; }
         }
-        @media (min-width: 1024px) {
-            .products-grid {
-                grid-template-columns: repeat(5, 1fr);
-            }
+        @media (min-width: 1024px) { 
+            .products-grid { grid-template-columns: repeat(5, 1fr); } 
         }
     </style>
 </head>
@@ -246,7 +79,6 @@
     <header>
         <div class="header-content">
             <div class="logo-container">
-                <!-- Logo Oficial do Mercado Livre em SVG -->
                 <img src="https://logopng.com.br/logos/mercado-livre-87.svg?dpl=dpl_83xWKUBiCCc88zqvgK1XNSG8JXgj" alt="Mercado Livre Logo@clipartmax.com" alt="Mercado Livre" class="logo-img">
             </div>
             <div class="search-bar">
@@ -259,37 +91,97 @@
     <main>
         <h2>Baseado na sua última visita</h2>
         <div class="products-grid" id="produtos">
-            <!-- Produtos renderizados aqui via JS -->
+            <p style="grid-column: 1/-1; color: #999; text-align: center; margin-top: 20px;">Carregando produtos...</p>
         </div>
     </main>
 
-    <!-- Cadeado para o Admin (Canto Esquerdo) -->
-    <a href="admin.html" class="float-btn btn-admin" title="Painel Admin">
-        <svg viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zM9 6c0-1.66 1.34-3 3-3s3 1.34 3 3v2H9V6zm9 14H6V10h12v10zm-6-3c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z"/></svg>
-    </a>
+    <!-- Modal Admin -->
+    <div class="modal-overlay" id="modalAdmin">
+        <div class="modal">
+            <h3>Painel de Controle</h3>
+            
+            <div id="login-area">
+                <div class="form-group">
+                    <label>Senha de Acesso</label>
+                    <input type="password" id="senha" placeholder="Digite sua senha" onkeypress="if(event.key === 'Enter') entrar()">
+                </div>
+                <button onclick="entrar()">Acessar Painel</button>
+            </div>
+            
+            <div id="admin-area" style="display: none;">
+                <h3 style="font-size: 16px; margin-top: 20px;">Adicionar Novo Produto</h3>
+                <form id="form-add" onsubmit="adicionar(event)">
+                    <div class="form-group">
+                        <label>Nome do Produto</label>
+                        <input type="text" id="nome" required placeholder="Ex: Smartphone Samsung...">
+                    </div>
+                    <div class="form-group">
+                        <label>Descrição</label>
+                        <textarea id="descricao" rows="3" required placeholder="Fale sobre os benefícios..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Valor Exato (R$)</label>
+                        <input type="number" step="0.01" id="valor" required placeholder="Ex: 1599.90">
+                    </div>
+                    <div class="form-group">
+                        <label>Link de Afiliado (URL)</label>
+                        <input type="url" id="link" required placeholder="https://...">
+                    </div>
+                    <div class="form-group">
+                        <label>Link da Imagem (URL)</label>
+                        <input type="url" id="imagem" required placeholder="https://...">
+                    </div>
+                    <button type="submit" id="btn-submit">Cadastrar Produto</button>
+                </form>
+                
+                <h3 style="font-size: 16px; margin-top: 30px;">Produtos Cadastrados</h3>
+                <div id="lista-produtos">
+                    <div class="lista-vazia">Nenhum produto cadastrado.</div>
+                </div>
+                
+                <button class="btn-secondary" onclick="fecharModal()">Fechar Painel</button>
+            </div>
+        </div>
+    </div>
 
-    <!-- TikTok (Canto Direito) -->
+    <!-- Botões Flutuantes -->
+    <button class="float-btn btn-admin" onclick="abrirModal()" title="Painel Admin">
+        <svg viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zM9 6c0-1.66 1.34-3 3-3s3 1.34 3 3v2H9V6zm9 14H6V10h12v10zm-6-3c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z"/></svg>
+    </button>
     <a href="https://tiktok.com/@shuler.o.gato" class="float-btn btn-tiktok" target="_blank" title="TikTok">
         <svg viewBox="0 0 448 512"><path d="M448 209.9a210.1 210.1 0 0 1 -122.8-39.3V349.4A162.6 162.6 0 1 1 185 188.3V278.2a74.6 74.6 0 1 0 52.2 71.2V0l88 0a121.2 121.2 0 0 0 1.9 22.2h0A122.2 122.2 0 0 0 381 102.4a121.4 121.4 0 0 0 67 20.1z"/></svg>
     </a>
 
     <script>
+        // Funções de armazenamento local
+        function salvarProdutos(produtos) {
+            localStorage.setItem('produtos_afiliados', JSON.stringify(produtos));
+            // Dispara evento para atualizar a vitrine
+            carregarProdutos();
+        }
+
+        function obterProdutos() {
+            const dados = localStorage.getItem('produtos_afiliados');
+            return dados ? JSON.parse(dados) : [];
+        }
+
         function formatarPreco(valor) {
             return Number(valor).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
         }
 
+        // Carregar produtos na vitrine
         function carregarProdutos() {
             const container = document.getElementById('produtos');
-            const lista = JSON.parse(localStorage.getItem('ml_produtos')) || [];
-
-            if (lista.length === 0) {
+            const produtos = obterProdutos();
+            
+            container.innerHTML = '';
+            
+            if (produtos.length === 0) {
                 container.innerHTML = '<p style="grid-column: 1/-1; color: #999; text-align: center; margin-top: 20px;">Nenhum produto cadastrado.</p>';
                 return;
             }
 
-            container.innerHTML = '';
-            lista.forEach((p, index) => {
-                // Ao clicar na imagem/card, abre o link
+            produtos.slice().reverse().forEach((p, index) => {
                 container.innerHTML += `
                     <div class="product-card" onclick="window.open('${p.link}', '_blank')" style="animation-delay: ${index * 0.1}s">
                         <div class="img-wrapper">
@@ -322,7 +214,107 @@
             cards.forEach(card => observer.observe(card));
         }
 
-        document.addEventListener('DOMContentLoaded', carregarProdutos);
+        // Funções do Admin
+        function abrirModal() {
+            document.getElementById('modalAdmin').classList.add('active');
+        }
+
+        function fecharModal() {
+            document.getElementById('modalAdmin').classList.remove('active');
+        }
+
+        function entrar() {
+            const senha = document.getElementById('senha').value;
+            if (senha === 'marcus') {
+                document.getElementById('login-area').style.display = 'none';
+                document.getElementById('admin-area').style.display = 'block';
+                carregarListaAdmin();
+            } else {
+                alert('Acesso negado. Senha incorreta.');
+            }
+        }
+
+        function adicionar(e) {
+            e.preventDefault();
+            const btn = document.getElementById('btn-submit');
+            btn.innerText = "Salvando...";
+            
+            const novo = {
+                id: Date.now().toString(),
+                nome: document.getElementById('nome').value,
+                descricao: document.getElementById('descricao').value,
+                valor: parseFloat(document.getElementById('valor').value),
+                link: document.getElementById('link').value,
+                imagem: document.getElementById('imagem').value
+            };
+
+            const produtos = obterProdutos();
+            produtos.push(novo);
+            salvarProdutos(produtos);
+            
+            e.target.reset();
+            btn.innerText = "Cadastrar Produto";
+            carregarListaAdmin();
+            alert("Produto salvo com sucesso!");
+        }
+
+        function remover(id) {
+            if (confirm('Tem certeza que deseja apagar este produto?')) {
+                let produtos = obterProdutos();
+                produtos = produtos.filter(p => p.id !== id);
+                salvarProdutos(produtos);
+                carregarListaAdmin();
+            }
+        }
+
+        function carregarListaAdmin() {
+            const container = document.getElementById('lista-produtos');
+            const produtos = obterProdutos();
+            
+            if (produtos.length === 0) {
+                container.innerHTML = '<div class="lista-vazia">Nenhum produto cadastrado.</div>';
+                return;
+            }
+
+            container.innerHTML = '';
+            
+            produtos.slice().reverse().forEach((p) => {
+                const precoFormatado = formatarPreco(p.valor);
+                
+                container.innerHTML += `
+                    <div class="item-produto">
+                        <div class="item-info">
+                            <img src="${p.imagem}" alt="Produto">
+                            <div class="item-detalhes">
+                                <h4>${p.nome}</h4>
+                                <p>${precoFormatado}</p>
+                            </div>
+                        </div>
+                        <button class="btn-remover" onclick="remover('${p.id}')">Remover</button>
+                    </div>
+                `;
+            });
+        }
+
+        // Fechar modal ao clicar fora
+        document.getElementById('modalAdmin').addEventListener('click', function(e) {
+            if (e.target === this) {
+                fecharModal();
+            }
+        });
+
+        // Carregar produtos ao iniciar
+        carregarProdutos();
+
+        // Atualizar produtos quando houver mudança no localStorage (para outras abas)
+        window.addEventListener('storage', function(e) {
+            if (e.key === 'produtos_afiliados') {
+                carregarProdutos();
+                if (document.getElementById('admin-area').style.display === 'block') {
+                    carregarListaAdmin();
+                }
+            }
+        });
     </script>
 </body>
 </html>
