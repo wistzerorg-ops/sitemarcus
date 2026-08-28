@@ -17,15 +17,15 @@
         main { max-width: 1200px; margin: 0 auto; padding: 20px 10px 80px 10px; }
         h2 { font-size: 24px; font-weight: 400; margin-bottom: 24px; color: var(--ml-text-light); }
         .products-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
-        .product-card { background: #fff; border-radius: 4px; overflow: hidden; box-shadow: 0 1px 2px 0 rgba(0,0,0,.12); cursor: pointer; }
+        .product-card { background: #fff; border-radius: 4px; overflow: hidden; box-shadow: 0 1px 2px 0 rgba(0,0,0,.12); cursor: pointer; text-decoration: none; color: inherit; display: flex; flex-direction: column; }
         .product-card:hover { box-shadow: 0 7px 16px 0 rgba(0,0,0,.1); }
-        .img-wrapper { width: 100%; aspect-ratio: 1; position: relative; border-bottom: 1px solid #eee; }
+        .img-wrapper { width: 100%; aspect-ratio: 1; position: relative; border-bottom: 1px solid #eee; overflow: hidden; }
         .img-wrapper img { width: 100%; height: 100%; object-fit: contain; padding: 15px; }
         .hover-desc { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(52, 131, 250, 0.95); color: #fff; padding: 20px; font-size: 14px; display: flex; align-items: center; justify-content: center; text-align: center; opacity: 0; transition: opacity 0.3s; pointer-events: none; }
         .product-card:hover .hover-desc { opacity: 1; }
         .info { padding: 12px 16px; }
         .price { font-size: 24px; }
-        .frete { color: var(--ml-green); font-size: 14px; font-weight: 600; }
+        .frete { color: var(--ml-green); font-size: 14px; font-weight: 600; display: block; }
         .title { font-size: 14px; color: var(--ml-text-light); margin-top: 4px; }
         
         .float-btn { position: fixed; width: 50px; height: 50px; border-radius: 50%; display: flex; justify-content: center; align-items: center; box-shadow: 0 4px 10px rgba(0,0,0,0.3); z-index: 1000; cursor: pointer; border: none; }
@@ -69,9 +69,7 @@
 
     <main>
         <h2>Baseado na sua última visita</h2>
-        <div class="products-grid" id="produtos">
-            <p style="grid-column: 1/-1; text-align: center;">Carregando produtos...</p>
-        </div>
+        <div class="products-grid" id="produtos"></div>
     </main>
 
     <!-- Modal Admin -->
@@ -130,10 +128,11 @@
     </a>
 
     <script>
-        // ====== CONFIGURAÇÃO: EDITE SEUS PRODUTOS AQUI ======
-        const PRODUTOS_INICIAIS = [
+        // ============================================
+        // COLOQUE SEUS PRODUTOS AQUI
+        // ============================================
+        const PRODUTOS = [
             {
-                id: "1",
                 nome: "Smartphone Samsung Galaxy S24",
                 descricao: "O melhor smartphone do momento com câmera de 200MP",
                 valor: 4999.90,
@@ -141,7 +140,6 @@
                 imagem: "https://images.samsung.com/br/smartphones/galaxy-s24/images/galaxy-s24-share-image.jpg"
             },
             {
-                id: "2",
                 nome: "Notebook Dell Inspiron 15",
                 descricao: "Notebook potente para trabalho e estudos",
                 valor: 3499.90,
@@ -149,18 +147,30 @@
                 imagem: "https://i.dell.com/is/image/DellContent/content/dam/ss2/product-images/dell-client-products/notebooks/inspiron-notebooks/15-3520/media-gallery/peripherals_laptop_latam_inspiron_15_3520_gallery_1.psd?fmt=png-alpha&pscan=auto&scl=1"
             },
             {
-                id: "3",
                 nome: "Fone de Ouvido Bluetooth JBL",
                 descricao: "Som incrível com graves potentes",
                 valor: 299.90,
                 link: "https://seu-link-afiliado.com/produto3",
                 imagem: "https://http2.mlstatic.com/D_NQ_NP_2X_789123-MLB54865412345_052023-F.webp"
+            },
+            {
+                nome: "Smart TV 55 4K LG",
+                descricao: "Imagem incrível com inteligência artificial",
+                valor: 2799.90,
+                link: "https://seu-link-afiliado.com/produto4",
+                imagem: "https://http2.mlstatic.com/D_NQ_NP_2X_987654-MLB54876543210_052023-F.webp"
+            },
+            {
+                nome: "Cafeteira Expresso Automática",
+                descricao: "Café perfeito em casa todos os dias",
+                valor: 1899.90,
+                link: "https://seu-link-afiliado.com/produto5",
+                imagem: "https://http2.mlstatic.com/D_NQ_NP_2X_654321-MLB51234567890_082022-F.webp"
             }
         ];
-        // ====== FIM DA CONFIGURAÇÃO ======
-        
-        // Chave única para este site (não precisa mudar)
-        const STORAGE_KEY = 'produtos_afiliados_globais_v1';
+        // ============================================
+        // FIM DA CONFIGURAÇÃO DE PRODUTOS
+        // ============================================
         
         function formatarPreco(valor) {
             return Number(valor).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
@@ -168,18 +178,11 @@
         
         function carregarProdutos() {
             const container = document.getElementById('produtos');
-            const produtos = obterProdutos();
-            
             container.innerHTML = '';
             
-            if (produtos.length === 0) {
-                container.innerHTML = '<p style="grid-column: 1/-1; text-align: center;">Nenhum produto cadastrado.</p>';
-                return;
-            }
-            
-            produtos.slice().reverse().forEach((p) => {
+            PRODUTOS.forEach((p) => {
                 container.innerHTML += `
-                    <div class="product-card" onclick="window.open('${p.link}', '_blank')">
+                    <a class="product-card" href="${p.link}" target="_blank">
                         <div class="img-wrapper">
                             <img src="${p.imagem}" alt="${p.nome}" onerror="this.src='https://via.placeholder.com/300x300?text=Sem+Imagem'">
                             <div class="hover-desc">${p.descricao}</div>
@@ -189,19 +192,9 @@
                             <span class="frete">Frete grátis</span>
                             <span class="title">${p.nome}</span>
                         </div>
-                    </div>
+                    </a>
                 `;
             });
-        }
-        
-        function obterProdutos() {
-            const dados = localStorage.getItem(STORAGE_KEY);
-            if (dados) {
-                return JSON.parse(dados);
-            }
-            // Se não houver dados, usa os produtos iniciais
-            localStorage.setItem(STORAGE_KEY, JSON.stringify(PRODUTOS_INICIAIS));
-            return PRODUTOS_INICIAIS;
         }
         
         function abrirModal() {
@@ -230,7 +223,6 @@
             e.preventDefault();
             
             const novo = {
-                id: Date.now().toString(),
                 nome: document.getElementById('nome').value,
                 descricao: document.getElementById('descricao').value,
                 valor: parseFloat(document.getElementById('valor').value),
@@ -238,38 +230,34 @@
                 imagem: document.getElementById('imagem').value
             };
             
-            const produtos = obterProdutos();
-            produtos.push(novo);
-            localStorage.setItem(STORAGE_KEY, JSON.stringify(produtos));
+            PRODUTOS.push(novo);
             
             e.target.reset();
             carregarListaAdmin();
             carregarProdutos();
-            alert("Produto salvo com sucesso!");
+            alert("Produto adicionado! Lembre-se de editar o código HTML para salvar permanentemente.");
         }
         
-        function remover(id) {
+        function remover(index) {
             if (confirm('Tem certeza que deseja apagar este produto?')) {
-                let produtos = obterProdutos();
-                produtos = produtos.filter(p => p.id !== id);
-                localStorage.setItem(STORAGE_KEY, JSON.stringify(produtos));
+                PRODUTOS.splice(index, 1);
                 carregarListaAdmin();
                 carregarProdutos();
+                alert("Produto removido! Lembre-se de editar o código HTML para salvar permanentemente.");
             }
         }
         
         function carregarListaAdmin() {
             const container = document.getElementById('lista-produtos');
-            const produtos = obterProdutos();
             
-            if (produtos.length === 0) {
+            if (PRODUTOS.length === 0) {
                 container.innerHTML = '<p style="text-align: center; color: #999;">Nenhum produto cadastrado.</p>';
                 return;
             }
             
             container.innerHTML = '';
             
-            produtos.slice().reverse().forEach((p) => {
+            PRODUTOS.forEach((p, index) => {
                 container.innerHTML += `
                     <div class="item-produto">
                         <div class="item-info">
@@ -279,7 +267,7 @@
                                 <p>${formatarPreco(p.valor)}</p>
                             </div>
                         </div>
-                        <button class="btn-remover" onclick="remover('${p.id}')">Remover</button>
+                        <button class="btn-remover" onclick="remover(${index})">Remover</button>
                     </div>
                 `;
             });
