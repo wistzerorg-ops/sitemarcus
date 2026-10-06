@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Química - GUGU Estudos</title>
+    <style>
+        :root {
+            --bg: #0a0a0f;
+            --panel: #14141c;
+            --card: #1c1c26;
+            --primary: #7c3aed;
+            --accent: #06b6d4;
+            --text: #f3f4f6;
+            --muted: #9ca3af;
+            --border: #2d2d3d;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            line-height: 1.8;
+            padding: 40px 20px;
+        }
+        .container { max-width: 1000px; margin: 0 auto; }
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 30px;
+        }
+        .header h1 {
+            font-size: 2.8rem;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 800;
+        }
+        .header p { color: var(--muted); font-size: 1.1rem; margin-top: 10px; }
+        .watermark {
+            position: fixed; bottom: 20px; right: 20px; font-size: 4rem;
+            font-weight: 900; color: rgba(124, 58, 237, 0.06);
+            pointer-events: none; transform: rotate(-15deg); z-index: 0;
+            letter-spacing: 5px;
+        }
+        h2 {
+            color: var(--text); font-size: 1.8rem; margin: 40px 0 20px;
+            padding-left: 15px; border-left: 5px solid var(--primary);
+        }
+        h3 { color: var(--accent); font-size: 1.3rem; margin: 30px 0 15px; }
+        p { color: var(--muted); margin-bottom: 18px; text-align: justify; }
+        ul, ol { color: var(--muted); margin-bottom: 20px; padding-left: 25px; }
+        li { margin-bottom: 10px; }
+        li strong { color: var(--text); }
+        .box {
+            background: var(--card); border: 1px solid var(--border);
+            border-radius: 12px; padding: 25px; margin: 25px 0;
+        }
+        .box-title {
+            font-weight: 700; color: var(--primary); margin-bottom: 12px;
+            font-size: 1.1rem;
+        }
+        .highlight {
+            background: rgba(124, 58, 237, 0.2); padding: 2px 8px;
+            border-radius: 4px; color: var(--primary); font-weight: 600;
+        }
+        .formula {
+            background: #0d0d14;
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--accent);
+            padding: 20px 25px;
+            font-family: 'Fira Code', monospace;
+            font-size: 1.1rem;
+            color: var(--accent);
+            margin: 20px 0;
+            border-radius: 8px;
+            overflow-x: auto;
+        }
+        table {
+            width: 100%; border-collapse: collapse; margin: 25px 0;
+            font-size: 0.95rem;
+        }
+        th, td {
+            padding: 14px 18px; text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+        th {
+            background: var(--card); color: var(--text);
+            font-weight: 700; text-transform: uppercase; font-size: 0.85rem;
+        }
+        tr:hover td { background: var(--card); }
+        .back-link {
+            display: inline-block; margin-top: 40px; padding: 12px 24px;
+            background: var(--primary); color: white; text-decoration: none;
+            border-radius: 8px; font-weight: 600; transition: 0.3s;
+        }
+        .back-link:hover { background: var(--primary-hover); transform: translateY(-2px); }
+        @media (max-width: 768px) {
+            .header h1 { font-size: 1.8rem; }
+            h2 { font-size: 1.4rem; }
+            body { padding: 20px 15px; }
+            .watermark { font-size: 2rem; }
+            .formula { font-size: 0.9rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="watermark">GUGU</div>
+    <div class="container">
+        <div class="header">
+            <h1>🧪 Química</h1>
+            <p>Compostos, reações, separação de misturas e química ambiental.</p>
+        </div>
+
+        <h2>Módulo 1: Química Geral</h2>
+
+        <h3>1.1. Matéria e suas Propriedades</h3>
+        <p>A matéria é tudo que tem massa e ocupa lugar no espaço. Pode ser classificada em:</p>
+        <ul>
+            <li><strong>Substância pura:</strong> Composição química fixa. Ex: água (H₂O), sal de cozinha (NaCl).</li>
+            <li><strong>Mistura:</strong> Combinação de duas ou mais substâncias. Ex: ar atmosférico, água do mar.</li>
+        </ul>
+        <p>As misturas podem ser <strong>homogêneas</strong> (uma única fase) ou <strong>heterogêneas</strong> (duas ou mais fases).</p>
+
+        <h3>1.2. Tabela Periódica</h3>
+        <p>A tabela periódica organiza os elementos químicos em ordem crescente de número atômico (Z). Os elementos são agrupados em famílias (colunas) e períodos (linhas).</p>
+        <table>
+            <tr><th>Família</th><th>Nome</th><th>Exemplos</th></tr>
+            <tr><td>1A</td><td>Metais Alcalinos</td><td>Li, Na, K</td></tr>
+            <tr><td>2A</td><td>Metais Alcalino-terrosos</td><td>Be, Mg, Ca</td></tr>
+            <tr><td>3A</td><td>Família do Boro</td><td>B, Al</td></tr>
+            <tr><td>4A</td><td>Família do Carbono</td><td>C, Si</td></tr>
+            <tr><td>5A</td><td>Família do Nitrogênio</td><td>N, P</td></tr>
+            <tr><td>6A</td><td>Calcogênios</td><td>O, S</td></tr>
+            <tr><td>7A</td><td>Halogênios</td><td>F, Cl, Br, I</td></tr>
+            <tr><td>8A</td><td>Gases Nobres</td><td>He, Ne, Ar</td></tr>
+        </table>
+
+        <h3>1.3. Ligações Químicas</h3>
+        <ul>
+            <li><strong>Iônica:</strong> Transferência de elétrons entre metal e ametal. Ex: NaCl (sódio + cloro).</li>
+            <li><strong>Covalente:</strong> Compartilhamento de elétrons entre ametais. Ex: H₂O, CO₂.</li>
+            <li><strong>Metálica:</strong> Mar de elétrons entre cátions metálicos. Ex: Fe, Cu, Al.</li>
+        </ul>
+
+        <h2>Módulo 2: Química Inorgânica</h2>
+
+        <h3>2.1. Funções Inorgânicas</h3>
+        <table>
+            <tr><th>Função</th><th>Definição</th><th>Exemplo</th></tr>
+            <tr><td>Ácido</td><td>Libera H⁺ em água</td><td>HCl, H₂SO₄</td></tr>
+            <tr><td>Base</td><td>Libera OH⁻ em água</td><td>NaOH, Ca(OH)₂</td></tr>
+            <tr><td>Sal</td><td>Reação entre ácido e base</td><td>NaCl, CaCO₃</td></tr>
+            <tr><td>Óxido</td><td>Composto binário com oxigênio</td><td>CO₂, CaO</td></tr>
+        </table>
+
+        <h3>2.2. Carbonato de Cálcio (CaCO₃)</h3>
+        <p>O principal componente do calcário é o Carbonato de Cálcio, um sal formado por átomos de Cálcio (Ca), Carbono (C) e Oxigênio (O).</p>
+        <div class="formula">
+            CaCO₃
+            <span class="comment">// Cálcio (Ca) + Carbono (C) + 3 Oxigênios (O)</span>
+        </div>
+        <p>O calcário é usado na produção de cimento, cal e como corretivo de solo.</p>
+
+        <h3>2.3. Reações Químicas</h3>
+        <div class="formula">
+            <span class="comment">// Síntese ou Adição:</span>
+            A + B → AB
+            <span class="comment">// Ex: 2H₂ + O₂ → 2H₂O</span>
+
+            <span class="comment">// Análise ou Decomposição:</span>
+            AB → A + B
+            <span class="comment">// Ex: 2H₂O → 2H₂ + O₂</span>
+
+            <span class="comment">// Simples Troca:</span>
+            A + BC → AC + B
+            <span class="comment">// Ex: Zn + 2HCl → ZnCl₂ + H₂</span>
+
+            <span class="comment">// Dupla Troca:</span>
+            AB + CD → AD + CB
+            <span class="comment">// Ex: NaCl + AgNO₃ → AgCl + NaNO₃</span>
+        </div>
+
+        <h2>Módulo 3: Química Orgânica</h2>
+
+        <h3>3.1. Cadeias Carbônicas</h3>
+        <p>O carbono é tetravalente (forma 4 ligações) e pode formar cadeias abertas, fechadas, saturadas, insaturadas, homogêneas e heterogêneas.</p>
+        <ul>
+            <li><strong>Hidrocarbonetos:</strong> Apenas C e H. Ex: metano (CH₄), eteno (C₂H₄).</li>
+            <li><strong>Álcoois:</strong> Grupo hidroxila (-OH). Ex: etanol (C₂H₅OH).</li>
+            <li><strong>Ácidos carboxílicos:</strong> Grupo carboxila (-COOH). Ex: ácido acético (CH₃COOH).</li>
+            <li><strong>Ésteres:</strong> Grupo -COO-. Ex: acetato de etila.</li>
+            <li><strong>Aromáticos:</strong> Anel benzênico. Ex: benzeno (C₆H₆).</li>
+        </ul>
+
+        <h3>3.2. Eugenol e Vanilina</h3>
+        <p>O eugenol é o principal componente do óleo essencial do cravo-da-índia. A vanilina é o aroma artificial de baunilha.</p>
+        <table>
+            <tr><th>Composto</th><th>Fórmula Molecular</th><th>Característica</th></tr>
+            <tr><td>Eugenol</td><td>C₁₀H₁₂O₂</td><td>Propriedades analgésicas e antissépticas</td></tr>
+            <tr><td>Vanilina</td><td>C₈H₈O₃</td><td>Aroma de baunilha</td></tr>
+        </table>
+        <p>O eugenol e a vanilina diferem em número de átomos de carbono e oxigênio. O eugenol tem 10 carbonos e 2 oxigênios; a vanilina tem 8 carbonos e 3 oxigênios.</p>
+
+        <h3>3.3. Vitaminas</h3>
+        <p>As vitaminas são classificadas de acordo com sua solubilidade:</p>
+        <ul>
+            <li><strong>Hidrossolúveis:</strong> Solúveis em água. Devem apresentar grupos hidroxila (-OH). Ex: <strong>Vitamina C</strong>.</li>
+            <li><strong>Lipossolúveis:</strong> Solúveis em gorduras e óleos. Ex: <strong>Vitamina A</strong>.</li>
+        </ul>
+        <p>A vitamina C é mais solúvel em água que a vitamina A, pois possui múltiplos grupos -OH em sua estrutura molecular.</p>
+
+        <h2>Módulo 4: Química Ambiental</h2>
+
+        <h3>4.1. Gases do Efeito Estufa</h3>
+        <p>Queimadas e decomposição de matéria orgânica liberam gases como:</p>
+        <ul>
+            <li><strong>Dióxido de Carbono (CO₂):</strong> Principal gás do efeito estufa emitido por atividades humanas.</li>
+            <li><strong>Metano (CH₄):</strong> Muito mais potente que o CO₂. No mercado de créditos de carbono, 1 tonelada de CH₄ equivale a 21 créditos de CO₂.</li>
+        </ul>
+        <p>Esses gases absorvem radiação infravermelha (calor) emitida pela Terra, impedindo que ela escape para o espaço, o que potencializa o <span class="highlight">aquecimento global</span>.</p>
+
+        <h3>4.2. Créditos de Carbono</h3>
+        <p>Uma tonelada de dióxido de carbono que deixa de ser emitido equivale a 1 crédito de carbono. Uma tonelada de metano equivale a 21 créditos.</p>
+        <div class="formula">
+            <span class="comment">// Cálculo de créditos:</span>
+            1 ha de floresta → 30 créditos
+            Parte brasileira da Amazônia → 60% de 670 milhões de ha
+            60% de 670.000.000 = 402.000.000 ha
+            Créditos = 402.000.000 · 30 = 12.060.000.000 créditos
+            <span class="comment">// Aproximadamente 12.060 bilhões de créditos</span>
+        </div>
+
+        <h2>Módulo 5: Separação de Misturas</h2>
+
+        <table>
+            <tr><th>Processo</th><th>Método</th><th>Exemplo</th></tr>
+            <tr><td>Filtração</td><td>Separa sólido de líquido/gás</td><td>Café passado</td></tr>
+            <tr><td>Decantação</td><td>Separa líquidos imiscíveis ou sólido de líquido</td><td>Água e óleo</td></tr>
+            <tr><td>Destilação Simples</td><td>Separa líquidos miscíveis com diferentes pontos de ebulição</td><td>Água e álcool</td></tr>
+            <tr><td>Destilação Fracionada</td><td>Separa misturas complexas de líquidos</td><td>Petróleo</td></tr>
+            <tr><td>Sublimação</td><td>Separa sólidos voláteis</td><td>Iodo e areia</td></tr>
+            <tr><td>Centrifugação</td><td>Separa sólidos de líquidos por rotação</td><td>Leite e nata</td></tr>
+            <tr><td>Imantação</td><td>Separa metais magnéticos</td><td>Ferro e enxofre</td></tr>
+        </table>
+
+        <div class="box">
+            <div class="box-title">📌 Exemplo: Destilação Fracionada do Petróleo</div>
+            <p>O petróleo é uma mistura complexa de hidrocarbonetos. Seus componentes são separados por destilação fracionada, que se baseia nas diferentes temperaturas de ebulição de cada substância.</p>
+            <p>Dessa forma, obtêm-se: gás natural, GLP, gasolina, querosene, diesel, lubrificantes e asfalto.</p>
+            <p>Os combustíveis fósseis são fontes de energia <strong>não renováveis</strong>, pois levam milhões de anos para se formar.</p>
+        </div>
+
+        <div class="box">
+            <div class="box-title">📌 Exemplo: Extração do Eugenol do Cravo-da-Índia</div>
+            <p>O eugenol é o principal componente do óleo essencial do cravo-da-índia. Sua extração pode ser feita por <strong>destilação por arraste a vapor</strong>, onde o vapor de água atravessa o cravo, arrastando os compostos voláteis. Após a condensação, obtém-se uma emulsão que é separada.</p>
+        </div>
+
+        <a href="index.html" class="back-link">← Voltar ao Início</a>
+    </div>
+</body>
+</html>

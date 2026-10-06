@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ciências e Biologia - GUGU Estudos</title>
+    <style>
+        :root {
+            --bg: #0a0a0f;
+            --panel: #14141c;
+            --card: #1c1c26;
+            --primary: #7c3aed;
+            --accent: #06b6d4;
+            --text: #f3f4f6;
+            --muted: #9ca3af;
+            --border: #2d2d3d;
+            --success: #10b981;
+            --danger: #ef4444;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            line-height: 1.8;
+            padding: 40px 20px;
+        }
+        .container { max-width: 1000px; margin: 0 auto; }
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 30px;
+        }
+        .header h1 {
+            font-size: 2.8rem;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 800;
+        }
+        .header p { color: var(--muted); font-size: 1.1rem; margin-top: 10px; }
+        .watermark {
+            position: fixed; bottom: 20px; right: 20px; font-size: 4rem;
+            font-weight: 900; color: rgba(124, 58, 237, 0.06);
+            pointer-events: none; transform: rotate(-15deg); z-index: 0;
+            letter-spacing: 5px;
+        }
+        h2 {
+            color: var(--text); font-size: 1.8rem; margin: 40px 0 20px;
+            padding-left: 15px; border-left: 5px solid var(--primary);
+        }
+        h3 { color: var(--accent); font-size: 1.3rem; margin: 30px 0 15px; }
+        p { color: var(--muted); margin-bottom: 18px; text-align: justify; }
+        ul, ol { color: var(--muted); margin-bottom: 20px; padding-left: 25px; }
+        li { margin-bottom: 10px; }
+        li strong { color: var(--text); }
+        .box {
+            background: var(--card); border: 1px solid var(--border);
+            border-radius: 12px; padding: 25px; margin: 25px 0;
+        }
+        .box-title {
+            font-weight: 700; color: var(--primary); margin-bottom: 12px;
+            font-size: 1.1rem;
+        }
+        .highlight {
+            background: rgba(124, 58, 237, 0.2); padding: 2px 8px;
+            border-radius: 4px; color: var(--primary); font-weight: 600;
+        }
+        .grid-2 {
+            display: grid; grid-template-columns: 1fr 1fr;
+            gap: 20px; margin: 25px 0;
+        }
+        @media (max-width: 768px) {
+            .grid-2 { grid-template-columns: 1fr; }
+            .header h1 { font-size: 1.8rem; }
+            h2 { font-size: 1.4rem; }
+            body { padding: 20px 15px; }
+            .watermark { font-size: 2rem; }
+        }
+        table {
+            width: 100%; border-collapse: collapse; margin: 25px 0;
+            font-size: 0.95rem;
+        }
+        th, td {
+            padding: 14px 18px; text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+        th {
+            background: var(--card); color: var(--text);
+            font-weight: 700; text-transform: uppercase; font-size: 0.85rem;
+        }
+        tr:hover td { background: var(--card); }
+        .back-link {
+            display: inline-block; margin-top: 40px; padding: 12px 24px;
+            background: var(--primary); color: white; text-decoration: none;
+            border-radius: 8px; font-weight: 600; transition: 0.3s;
+        }
+        .back-link:hover { background: var(--primary-hover); transform: translateY(-2px); }
+    </style>
+</head>
+<body>
+    <div class="watermark">GUGU</div>
+    <div class="container">
+        <div class="header">
+            <h1>🔬 Ciências e Biologia</h1>
+            <p>Ecologia, adaptações evolutivas, biodiversidade amazônica e saúde.</p>
+        </div>
+
+        <h2>Módulo 1: Ecologia e Biomas</h2>
+
+        <h3>1.1. O Bioma Amazônia</h3>
+        <p>O Bioma Amazônia é um dos ecossistemas mais importantes e diversificados do mundo. Abriga mais de 40.000 espécies de plantas, cerca de 2.000 espécies de aves, 300 espécies de mamíferos e 2.500 espécies de peixes. O clima é equatorial, quente e úmido, com precipitação abundante durante todo o ano.</p>
+        
+        <div class="box">
+            <div class="box-title">🌳 Estratos da Floresta Amazônica</div>
+            <ul>
+                <li><strong>Mata de Igapó:</strong> Constantemente alagada por rios de água preta (ex: Rio Negro). Vegetação adaptada a solos inundados.</li>
+                <li><strong>Mata de Várzea:</strong> Alagada periodicamente por rios de água branca (ex: Rio Solimões). Solos ricos em sedimentos.</li>
+                <li><strong>Mata de Terra Firme:</strong> Nunca alagada. Onde se encontram as árvores de maior porte, como a castanheira e o cedro.</li>
+            </ul>
+        </div>
+
+        <h3>1.2. A Bacia Amazônica</h3>
+        <p>A Bacia Amazônica é a maior bacia hidrográfica do mundo. Seu principal rio, o Amazonas, lança ao Oceano Atlântico cerca de um quinto de toda a água doce do planeta. O rio Amazonas é responsável por cerca de 20% do volume de água doce que chega aos oceanos.</p>
+
+        <h3>1.3. A Amazônia Legal</h3>
+        <p>A Amazônia Legal corresponde à área de atuação da Superintendência de Desenvolvimento da Amazônia (Sudam). Engloba a totalidade de oito estados (Acre, Amapá, Amazonas, Mato Grosso, Pará, Rondônia, Roraima e Tocantins) e parte do Estado do Maranhão. Estende-se além do Bioma Amazônia, incluindo partes do Cerrado e do Pantanal.</p>
+
+        <h2>Módulo 2: Botânica</h2>
+
+        <h3>2.1. Adaptações das Plantas Aquáticas</h3>
+        <p>A <strong>Vitória-Régia</strong> (Victoria amazonica) é uma planta aquática icônica da Amazônia. Suas folhas circulares podem atingir até 3 metros de diâmetro e suportar até 40 kg. A capacidade de flutuação é resultado de adaptações evolutivas:</p>
+        <ul>
+            <li><strong>Forma circular:</strong> Distribui uniformemente o peso.</li>
+            <li><strong>Tecidos aeríferos (aerênquimas):</strong> Compartimentos cheios de ar nos tecidos vegetais que aumentam o empuxo.</li>
+            <li><strong>Raízes submersas:</strong> Fixam a planta no fundo lodoso e absorvem nutrientes.</li>
+        </ul>
+        <p>Essas adaptações são funcionalmente comparáveis ao uso de <span class="highlight">coletes salva-vidas infláveis</span> por humanos.</p>
+
+        <h3>2.2. A Castanheira-do-Brasil</h3>
+        <p>A <strong>Castanheira-do-Brasil</strong> (Bertholletia excelsa) é uma árvore nativa da Amazônia que pode atingir 50 metros de altura e 4 metros de diâmetro na base. Seu fruto, o ouriço, é lenhoso e esférico, pesando até 1,5 kg, e contém muitas sementes (castanhas) em seu interior.</p>
+        
+        <div class="box">
+            <div class="box-title">🌰 Dispersão de Sementes pela Cutia</div>
+            <p>Na natureza, o principal dispersor das sementes da castanheira é a <strong>cutia</strong>, um dos poucos animais capazes de roer o ouriço e a casca da castanha. A cutia enterra algumas sementes para consumo posterior, mas muitas vezes esquece o local, permitindo que novas castanheiras germinem.</p>
+            <p>Essa relação é um exemplo de <span class="highlight">mutualismo</span> (a cutia se alimenta e a castanheira se dispersa).</p>
+        </div>
+
+        <h3>2.3. Fotossíntese e Respiração</h3>
+        <p>As plantas realizam dois processos metabólicos fundamentais:</p>
+        
+        <div class="grid-2">
+            <div class="box">
+                <div class="box-title">☀️ Fotossíntese</div>
+                <p>Ocorre na presença de luz. Transforma CO₂ e H₂O em glicose (C₆H₁₂O₆) e O₂, utilizando a energia luminosa captada pela clorofila.</p>
+                <p><strong>Equação:</strong> 6CO₂ + 6H₂O → C₆H₁₂O₆ + 6O₂</p>
+                <p>É um processo de <strong>anabolismo</strong> (síntese) e ocorre apenas durante o dia.</p>
+            </div>
+            <div class="box">
+                <div class="box-title">🌙 Respiração</div>
+                <p>Ocorre tanto na presença quanto na ausência de luz. Consome O₂ e glicose para produzir energia (ATP), liberando CO₂ e H₂O.</p>
+                <p><strong>Equação:</strong> C₆H₁₂O₆ + 6O₂ → 6CO₂ + 6H₂O + Energia</p>
+                <p>É um processo de <strong>catabolismo</strong> (degradação).</p>
+            </div>
+        </div>
+
+        <h2>Módulo 3: Zoologia</h2>
+
+        <h3>3.1. Animais Venenosos vs. Peçonhentos</h3>
+        <p>É fundamental distinguir esses dois conceitos:</p>
+        
+        <div class="grid-2">
+            <div class="box">
+                <div class="box-title">🐸 Animais Venenosos</div>
+                <p>Produzem toxinas, mas <strong>não possuem aparelho inoculador</strong> (dentes ou ferrões). O envenenamento ocorre de forma passiva: por compressão (rãs), contato (taturana) ou ingestão (peixe baiaçu).</p>
+                <p><strong>Exemplo:</strong> Rãs da família Dendrobatidae (rã-flecha-dourada), cujo veneno deriva da alimentação (formigas e besouros que comem fungos venenosos).</p>
+            </div>
+            <div class="box">
+                <div class="box-title">🐍 Animais Peçonhentos</div>
+                <p>Produzem ou modificam veneno e <strong>possuem estruturas especializadas</strong> para injetá-lo na presa ou predador (dentes, ferrões, aguilhões).</p>
+                <p><strong>Exemplos:</strong> Cascavel, jararaca, escorpiões, aranhas, abelhas, vespas e lacraias.</p>
+            </div>
+        </div>
+
+        <h3>3.2. A Fauna Amazônica</h3>
+        <p>Nos rios que cortam a Floresta Amazônica, são encontradas várias espécies de vertebrados, como o pirarucu, o poraquê (peixe elétrico), a arraia, o tucunaré, o peixe-boi e o boto-cor-de-rosa.</p>
+        <p>Todos esses animais são <strong>vertebrados</strong>, ou seja, possuem coluna vertebral. Além disso, todos dependem de oxigênio para a respiração celular, que é usado na oxidação de moléculas orgânicas (como a glicose) para obter energia.</p>
+
+        <h3>3.3. Répteis e Anfíbios</h3>
+        <table>
+            <tr><th>Característica</th><th>Anfíbios</th><th>Répteis</th></tr>
+            <tr><td>Pele</td><td>Úmida e permeável</td><td>Seca e escamosa</td></tr>
+            <tr><td>Respiração</td><td>Cutânea e pulmonar</td><td>Pulmonar</td></tr>
+            <tr><td>Fecundação</td><td>Externa (geralmente)</td><td>Interna</td></tr>
+            <tr><td>Desenvolvimento</td><td>Indireto (larva)</td><td>Direto</td></tr>
+            <tr><td>Temperatura</td><td>Pecilotérmicos</td><td>Pecilotérmicos</td></tr>
+        </table>
+
+        <h2>Módulo 4: Saúde e Doenças</h2>
+
+        <h3>4.1. Malária</h3>
+        <p>A malária é uma doença infecciosa causada pelo protozoário do gênero <strong>Plasmodium</strong>, transmitida pela picada da fêmea do mosquito <strong>Anopheles</strong>.</p>
+        <p>Estudos do Ipea demonstram que, entre 2004 e 2012, para cada 1% de floresta derrubada na Amazônia, houve um acréscimo de 23% nos casos de malária. Isso ocorre porque o desmatamento altera o ecossistema, criando condições para a proliferação dos mosquitos transmissores.</p>
+
+        <h3>4.2. Outras Doenças Tropicais</h3>
+        <table>
+            <tr><th>Doença</th><th>Agente Causador</th><th>Transmissor</th></tr>
+            <tr><td>Malária</td><td>Plasmodium</td><td>Mosquito Anopheles</td></tr>
+            <tr><td>Dengue</td><td>Vírus</td><td>Mosquito Aedes aegypti</td></tr>
+            <tr><td>Febre Amarela</td><td>Vírus</td><td>Mosquito Haemagogus</td></tr>
+            <tr><td>Doença de Chagas</td><td>Trypanosoma cruzi</td><td>Barbeiro</td></tr>
+            <tr><td>Leishmaniose</td><td>Leishmania</td><td>Mosquito-palha</td></tr>
+        </table>
+
+        <h2>Módulo 5: Genética e Evolução</h2>
+
+        <h3>5.1. Seleção Natural</h3>
+        <p>A seleção natural é o mecanismo evolutivo proposto por Charles Darwin. Os indivíduos mais adaptados ao ambiente têm maior chance de sobreviver e se reproduzir, transmitindo suas características aos descendentes.</p>
+        <p><strong>Exemplo:</strong> As rãs venenosas da Amazônia desenvolveram toxinas como defesa contra predadores. As que produziam mais toxina sobreviveram e se reproduziram, passando essa característica adiante.</p>
+
+        <h3>5.2. Seleção Artificial</h3>
+        <p>A seleção artificial é realizada pelo ser humano, que escolhe quais indivíduos se reproduzem para obter características desejadas.</p>
+        <p><strong>Exemplo:</strong> Os indígenas da Amazônia domesticaram o cupuaçu a partir do cupuí, selecionando os melhores espécimes ao longo de milhares de anos.</p>
+
+        <h3>5.3. DNA e RNA</h3>
+        <table>
+            <tr><th>Característica</th><th>DNA</th><th>RNA</th></tr>
+            <tr><td>Açúcar</td><td>Desoxirribose</td><td>Ribose</td></tr>
+            <tr><td>Bases Nitrogenadas</td><td>A, T, C, G</td><td>A, U, C, G</td></tr>
+            <tr><td>Fitas</td><td>Dupla hélice</td><td>Fita simples</td></tr>
+            <tr><td>Função</td><td>Armazenar informação genética</td><td>Sintetizar proteínas</td></tr>
+        </table>
+
+        <a href="index.html" class="back-link">← Voltar ao Início</a>
+    </div>
+</body>
+</html>

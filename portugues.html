@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Português e Literatura - GUGU Estudos</title>
+    <style>
+        :root {
+            --bg: #0a0a0f;
+            --panel: #14141c;
+            --card: #1c1c26;
+            --primary: #7c3aed;
+            --accent: #06b6d4;
+            --text: #f3f4f6;
+            --muted: #9ca3af;
+            --border: #2d2d3d;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            line-height: 1.8;
+            padding: 40px 20px;
+        }
+        .container { max-width: 1000px; margin: 0 auto; }
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 30px;
+        }
+        .header h1 {
+            font-size: 2.8rem;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 800;
+        }
+        .header p { color: var(--muted); font-size: 1.1rem; margin-top: 10px; }
+        .watermark {
+            position: fixed; bottom: 20px; right: 20px; font-size: 4rem;
+            font-weight: 900; color: rgba(124, 58, 237, 0.06);
+            pointer-events: none; transform: rotate(-15deg); z-index: 0;
+            letter-spacing: 5px;
+        }
+        h2 {
+            color: var(--text); font-size: 1.8rem; margin: 40px 0 20px;
+            padding-left: 15px; border-left: 5px solid var(--primary);
+        }
+        h3 { color: var(--accent); font-size: 1.3rem; margin: 30px 0 15px; }
+        p { color: var(--muted); margin-bottom: 18px; text-align: justify; }
+        ul, ol { color: var(--muted); margin-bottom: 20px; padding-left: 25px; }
+        li { margin-bottom: 10px; }
+        li strong { color: var(--text); }
+        .box {
+            background: var(--card); border: 1px solid var(--border);
+            border-radius: 12px; padding: 25px; margin: 25px 0;
+        }
+        .box-title {
+            font-weight: 700; color: var(--primary); margin-bottom: 12px;
+            font-size: 1.1rem;
+        }
+        .highlight {
+            background: rgba(124, 58, 237, 0.2); padding: 2px 8px;
+            border-radius: 4px; color: var(--primary); font-weight: 600;
+        }
+        .poem {
+            background: #0d0d14;
+            border-left: 4px solid var(--accent);
+            padding: 20px 25px;
+            font-style: italic;
+            color: var(--text);
+            margin: 20px 0;
+            border-radius: 8px;
+            white-space: pre-line;
+        }
+        table {
+            width: 100%; border-collapse: collapse; margin: 25px 0;
+            font-size: 0.95rem;
+        }
+        th, td {
+            padding: 14px 18px; text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+        th {
+            background: var(--card); color: var(--text);
+            font-weight: 700; text-transform: uppercase; font-size: 0.85rem;
+        }
+        tr:hover td { background: var(--card); }
+        .back-link {
+            display: inline-block; margin-top: 40px; padding: 12px 24px;
+            background: var(--primary); color: white; text-decoration: none;
+            border-radius: 8px; font-weight: 600; transition: 0.3s;
+        }
+        .back-link:hover { background: var(--primary-hover); transform: translateY(-2px); }
+        @media (max-width: 768px) {
+            .header h1 { font-size: 1.8rem; }
+            h2 { font-size: 1.4rem; }
+            body { padding: 20px 15px; }
+            .watermark { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="watermark">GUGU</div>
+    <div class="container">
+        <div class="header">
+            <h1>📖 Português e Literatura</h1>
+            <p>Gramática, figuras de linguagem, interpretação de texto e literatura brasileira.</p>
+        </div>
+
+        <h2>Módulo 1: Gramática</h2>
+
+        <h3>1.1. Classes de Palavras</h3>
+        <table>
+            <tr><th>Classe</th><th>Função</th><th>Exemplo</th></tr>
+            <tr><td>Substantivo</td><td>Nomeia seres, coisas, lugares</td><td>floresta, rio, Amazônia</td></tr>
+            <tr><td>Adjetivo</td><td>Caracteriza o substantivo</td><td>amazônico, caudaloso, verde</td></tr>
+            <tr><td>Verbo</td><td>Indica ação, estado ou fenômeno</td><td>preservar, ser, chover</td></tr>
+            <tr><td>Advérbio</td><td>Modifica verbo, adjetivo ou advérbio</td><td>muito, rapidamente, ontem</td></tr>
+            <tr><td>Pronome</td><td>Substitui ou acompanha o substantivo</td><td>ele, seu, este, quem</td></tr>
+            <tr><td>Preposição</td><td>Liga termos, estabelecendo relação</td><td>de, para, com, sobre</td></tr>
+            <tr><td>Conjunção</td><td>Liga orações ou termos semelhantes</td><td>e, mas, porque, embora</td></tr>
+            <tr><td>Interjeição</td><td>Expressa emoções</td><td>Uai!, Oxente!, Ah!</td></tr>
+            <tr><td>Numeral</td><td>Indica quantidade, ordem, fração</td><td>dois, primeiro, metade</td></tr>
+            <tr><td>Artigo</td><td>Determina ou indetermina o substantivo</td><td>o, a, um, uma</td></tr>
+        </table>
+
+        <h3>1.2. Sintaxe: Sujeito e Predicado</h3>
+        <p><strong>Sujeito:</strong> Termo sobre o qual se declara algo. Pode ser:</p>
+        <ul>
+            <li><strong>Simples:</strong> Um único núcleo. Ex: "A floresta é vasta."</li>
+            <li><strong>Composto:</strong> Mais de um núcleo. Ex: "A floresta e o rio são importantes."</li>
+            <li><strong>Oculto:</strong> Não está explícito, mas pode ser identificado. Ex: "Preservamos a Amazônia." (nós)</li>
+            <li><strong>Indeterminado:</strong> Não se sabe quem pratica a ação. Ex: "Disseram que vai chover."</li>
+            <li><strong>Inexistente:</strong> Verbos impessoais (haver, fazer, ser). Ex: "Havia muitas árvores."</li>
+        </ul>
+        <p><strong>Predicado:</strong> O que se declara do sujeito. Pode ser verbal (ação), nominal (estado) ou verbo-nominal (ação + estado).</p>
+
+        <h3>1.3. Concordância Verbal e Nominal</h3>
+        <p><strong>Concordância Verbal:</strong> O verbo concorda com o sujeito em número e pessoa. Ex: "Os rios correm." / "O rio corre."</p>
+        <p><strong>Concordância Nominal:</strong> O adjetivo, artigo, pronome e numeral concordam com o substantivo em gênero e número. Ex: "As florestas densas são preservadas."</p>
+
+        <h3>1.4. Regência Verbal e Nominal</h3>
+        <p><strong>Regência Verbal:</strong> Relação de dependência entre o verbo e seus complementos. Ex: "Assistir ao filme" (verbo assistir = ver, exige preposição "a").</p>
+        <p><strong>Regência Nominal:</strong> Relação entre o nome (substantivo, adjetivo, advérbio) e seus complementos. Ex: "Obediência às leis."</p>
+
+        <h3>1.5. Crase</h3>
+        <p>A crase é a fusão da preposição "a" com o artigo "a(s)" ou com pronomes demonstrativos. Usa-se crase:</p>
+        <ul>
+            <li>Antes de palavra feminina determinada: "Vou à floresta."</li>
+            <li>Antes de locuções femininas: "às vezes", "à noite".</li>
+            <li>Antes de pronomes demonstrativos aquele(a)(s): "Referiu-se àquele problema."</li>
+        </ul>
+        <p>Não se usa crase antes de palavras masculinas, verbos, pronomes pessoais e nomes de cidades sem artigo.</p>
+
+        <h2>Módulo 2: Figuras de Linguagem</h2>
+
+        <div class="box">
+            <div class="box-title">🔤 Paronomásia</div>
+            <p>Aproximação de palavras com sons semelhantes, mas significados distintos.</p>
+            <div class="poem">"Tanta insânia e tanta insônia"</div>
+        </div>
+
+        <div class="box">
+            <div class="box-title">📖 Metáfora</div>
+            <p>Comparação implícita, sem uso de conectivos comparativos.</p>
+            <div class="poem">"fixando os olhos em peles de papel" (referindo-se ao ato de ler livros)</div>
+        </div>
+
+        <div class="box">
+            <div class="box-title">🎭 Personificação (Prosopopeia)</div>
+            <p>Atribuição de características humanas a seres inanimados ou animais.</p>
+            <div class="poem">"a bela flora clama em vão: 'Me poupe!'"</div>
+        </div>
+
+        <div class="box">
+            <div class="box-title">🔀 Antítese</div>
+            <p>Uso de termos de sentido oposto.</p>
+            <div class="poem">"A beleza e o valor da mata"</div>
+        </div>
+
+        <div class="box">
+            <div class="box-title">⚡ Hipérbole</div>
+            <p>Exagero intencional para enfatizar uma ideia.</p>
+            <div class="poem">"Chorei rios de lágrimas."</div>
+        </div>
+
+        <div class="box">
+            <div class="box-title">😏 Ironia</div>
+            <p>Uso de expressão que sugere o contrário do que se quer dizer.</p>
+            <div class="poem">"Que belo desmatamento! Parabéns, humanidade!"</div>
+        </div>
+
+        <div class="box">
+            <div class="box-title">🔄 Pleonasmo</div>
+            <p>Redundância intencional para reforçar a ideia.</p>
+            <div class="poem">"Subir para cima", "entrar para dentro".</div>
+        </div>
+
+        <div class="box">
+            <div class="box-title">🔗 Polissíndeto</div>
+            <p>Repetição de conjunções coordenativas.</p>
+            <div class="poem">"E a floresta chora, e o rio seca, e a vida se vai."</div>
+        </div>
+
+        <div class="box">
+            <div class="box-title">📝 Anáfora</div>
+            <p>Repetição de uma palavra ou expressão no início de versos ou frases.</p>
+            <div class="poem">"Amazônia! / Razão de tanta insânia e tanta insônia!"</div>
+        </div>
+
+        <h2>Módulo 3: Interpretação de Texto</h2>
+
+        <h3>3.1. Coesão Textual</h3>
+        <p>A coesão é a ligação entre as partes do texto, garantida por pronomes, conjunções e advérbios.</p>
+        <ul>
+            <li><strong>Anáfora:</strong> Retoma termos já mencionados. Ex: "Os povos da floresta (...) Eles não pensam no amanhã."</li>
+            <li><strong>Catáfora:</strong> Antecipa informações. Ex: "Era isso que ele queria: preservar a floresta."</li>
+        </ul>
+
+        <h3>3.2. Gêneros Textuais</h3>
+        <table>
+            <tr><th>Gênero</th><th>Função Social</th><th>Exemplo</th></tr>
+            <tr><td>Lenda</td><td>Transmitir valores e conhecimentos tradicionais</td><td>Curupira, Saci</td></tr>
+            <tr><td>Crônica</td><td>Comentar fatos do cotidiano</td><td>Crônicas de Rubem Braga</td></tr>
+            <tr><td>Artigo de Opinião</td><td>Defender um ponto de vista</td><td>Editoriais de jornal</td></tr>
+            <tr><td>Quadrinhos</td><td>Humor e crítica social</td><td>Tirinhas de Mafalda</td></tr>
+            <tr><td>Poema</td><td>Expressar sentimentos e emoções</td><td>Sonetos de Camões</td></tr>
+            <tr><td>Notícia</td><td>Informar sobre fatos recentes</td><td>Reportagens de jornal</td></tr>
+        </table>
+
+        <h3>3.3. O Texto de Davi Kopenawa</h3>
+        <p>Davi Kopenawa, líder Yanomami, escreveu "A Queda do Céu", obra que denuncia a destruição da floresta e a ameaça aos povos indígenas. Em seus relatos, ele critica a visão dos brancos que acham que os indígenas deveriam imitá-los.</p>
+        
+        <div class="box">
+            <div class="box-title">📜 Trecho de "A Queda do Céu"</div>
+            <div class="poem">"Hoje, os brancos acham que deveríamos imitá-los em tudo. Mas não é o que queremos. A meu ver, só poderemos nos tornar brancos no dia em que eles mesmos se transformarem em Yanomami. Sei também que se formos viver em suas cidades, seremos infelizes. Então, eles acabarão com a floresta e nunca mais deixarão nenhum lugar onde possamos viver longe deles. Não poderemos mais caçar, nem plantar nada. Nossos filhos vão passar fome."</div>
+            <p>Esse trecho evidencia a resistência cultural e a luta pela manutenção de seu modo de vida, intrinsecamente ligado à floresta.</p>
+        </div>
+
+        <h2>Módulo 4: Literatura Brasileira</h2>
+
+        <h3>4.1. Romantismo (1836-1881)</h3>
+        <p>Movimento literário que valorizava a emoção, o individualismo e a natureza. No Brasil, destacou-se a primeira geração (indianista), com José de Alencar e Gonçalves Dias.</p>
+        <p><strong>Obras:</strong> "Iracema", "O Guarani" (José de Alencar), "Canção do Exílio" (Gonçalves Dias).</p>
+
+        <h3>4.2. Realismo/Naturalismo (1881-1902)</h3>
+        <p>Movimento que criticava a sociedade burguesa e retratava a realidade de forma objetiva. Destacaram-se Machado de Assis e Aluísio Azevedo.</p>
+        <p><strong>Obras:</strong> "Dom Casmurro", "Memórias Póstumas de Brás Cubas" (Machado de Assis), "O Cortiço" (Aluísio Azevedo).</p>
+
+        <h3>4.3. Modernismo (1922-1945)</h3>
+        <p>Movimento que rompeu com as tradições literárias e valorizou a cultura brasileira. A Semana de Arte Moderna de 1922 foi o marco inicial.</p>
+        <p><strong>Obras:</strong> "Macunaíma" (Mário de Andrade), "Manifesto Antropófago" (Oswald de Andrade).</p>
+
+        <h3>4.4. Literatura Contemporânea</h3>
+        <p>Valoriza a diversidade cultural, as questões sociais e a experimentação formal. Autores como Conceição Evaristo, Ailton Krenak e Davi Kopenawa trazem novas perspectivas.</p>
+
+        <a href="index.html" class="back-link">← Voltar ao Início</a>
+    </div>
+</body>
+</html>

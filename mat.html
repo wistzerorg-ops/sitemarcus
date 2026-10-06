@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matemática e Física - GUGU Estudos</title>
+    <style>
+        :root {
+            --bg: #0a0a0f;
+            --panel: #14141c;
+            --card: #1c1c26;
+            --primary: #7c3aed;
+            --primary-hover: #8b5cf6;
+            --accent: #06b6d4;
+            --text: #f3f4f6;
+            --muted: #9ca3af;
+            --border: #2d2d3d;
+            --success: #10b981;
+            --danger: #ef4444;
+            --warning: #f59e0b;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            line-height: 1.8;
+            padding: 40px 20px;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 30px;
+        }
+        .header h1 {
+            font-size: 2.8rem;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 800;
+        }
+        .header p {
+            color: var(--muted);
+            font-size: 1.1rem;
+            margin-top: 10px;
+        }
+        .watermark {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            font-size: 4rem;
+            font-weight: 900;
+            color: rgba(124, 58, 237, 0.06);
+            pointer-events: none;
+            transform: rotate(-15deg);
+            z-index: 0;
+            letter-spacing: 5px;
+        }
+        h2 {
+            color: var(--text);
+            font-size: 1.8rem;
+            margin: 40px 0 20px;
+            padding-left: 15px;
+            border-left: 5px solid var(--primary);
+        }
+        h3 {
+            color: var(--accent);
+            font-size: 1.3rem;
+            margin: 30px 0 15px;
+        }
+        p {
+            color: var(--muted);
+            margin-bottom: 18px;
+            text-align: justify;
+            font-size: 1rem;
+        }
+        ul, ol {
+            color: var(--muted);
+            margin-bottom: 20px;
+            padding-left: 25px;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        li strong {
+            color: var(--text);
+        }
+        .formula {
+            background: #0d0d14;
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--accent);
+            padding: 20px 25px;
+            font-family: 'Fira Code', monospace;
+            font-size: 1.15rem;
+            color: var(--accent);
+            margin: 20px 0;
+            border-radius: 8px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+        }
+        .formula .comment {
+            color: #6b7280;
+            font-size: 0.9rem;
+        }
+        .box {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 25px;
+            margin: 25px 0;
+        }
+        .box-title {
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 12px;
+            font-size: 1.1rem;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 0.95rem;
+        }
+        th, td {
+            padding: 14px 18px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+        th {
+            background: var(--card);
+            color: var(--text);
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+        }
+        tr:hover td {
+            background: var(--card);
+        }
+        .highlight {
+            background: rgba(124, 58, 237, 0.2);
+            padding: 2px 8px;
+            border-radius: 4px;
+            color: var(--primary-hover);
+            font-weight: 600;
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 40px;
+            padding: 12px 24px;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+        .back-link:hover {
+            background: var(--primary-hover);
+            transform: translateY(-2px);
+        }
+        @media (max-width: 768px) {
+            .header h1 { font-size: 1.8rem; }
+            h2 { font-size: 1.4rem; }
+            h3 { font-size: 1.1rem; }
+            body { padding: 20px 15px; }
+            .watermark { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="watermark">GUGU</div>
+    <div class="container">
+        <div class="header">
+            <h1>📐 Matemática e Física</h1>
+            <p>Raciocínio lógico, álgebra, geometria, mecânica e eletricidade aplicados ao contexto amazônico.</p>
+        </div>
+
+        <h2>Módulo 1: Matemática Básica</h2>
+        
+        <h3>1.1. Porcentagem e Regra de Três</h3>
+        <p>A porcentagem é uma ferramenta fundamental para calcular perdas, ganhos e proporções. No contexto amazônico, é usada para medir desmatamento, produtividade agrícola e mercado de créditos de carbono.</p>
+        
+        <div class="box">
+            <div class="box-title">📌 Exemplo Prático: O Caso do Café</div>
+            <p>Uma saca de café verde tem 60 kg. Após a torrefação, obtém-se apenas 48 kg de café torrado. Qual é a porcentagem de perda?</p>
+            <div class="formula">
+                Perda = 60 kg - 48 kg = 12 kg
+                
+                <span class="comment">// Cálculo da porcentagem:</span>
+                60 kg --- 100%
+                12 kg --- X%
+                
+                60 · X = 12 · 100
+                60X = 1200
+                X = 1200 / 60
+                X = 20%
+            </div>
+            <p>Portanto, o café perde <strong>20%</strong> de sua massa durante a torrefação.</p>
+        </div>
+
+        <p>Agora, suponha que uma indústria queira produzir 1 tonelada (1000 kg) de café torrado. Quantas sacas de café verde são necessárias?</p>
+        
+        <div class="formula">
+            1 saca --- 48 kg torrado
+            Y sacas --- 1000 kg torrado
+            
+            48 · Y = 1000
+            Y = 1000 / 48
+            Y ≈ 20,83
+        </div>
+        <p>Como não se pode comprar uma fração de saca, são necessárias no mínimo <strong>21 sacas</strong>.</p>
+
+        <h3>1.2. Funções de 1º Grau</h3>
+        <p>Uma função de 1º grau tem a forma <span class="highlight">f(x) = ax + b</span>, onde "a" é o coeficiente angular (taxa de variação) e "b" é o coeficiente linear (valor inicial).</p>
+        
+        <div class="box">
+            <div class="box-title">📌 Exemplo: Denúncias Ambientais</div>
+            <p>Em um sistema de denúncias do Ibama, o número de denúncias (N) em função do dia do mês (D) segue uma progressão aritmética. No dia 2, há 7 denúncias; no dia 3, 9; no dia 4, 11. Qual é a função?</p>
+            <div class="formula">
+                <span class="comment">// A taxa de variação é 2 (aumenta 2 por dia)</span>
+                N = 2D + b
+                
+                <span class="comment">// Substituindo D=2 e N=7:</span>
+                7 = 2(2) + b
+                7 = 4 + b
+                b = 3
+                
+                <span class="comment">// Função final:</span>
+                N = 2D + 3
+            </div>
+            <p>Teste: Para D=2, N = 2(2) + 3 = 7. Correto.</p>
+        </div>
+
+        <h3>1.3. Progressões Aritméticas (PA)</h3>
+        <p>Uma PA é uma sequência numérica onde a diferença entre termos consecutivos é constante (razão "r").</p>
+        <div class="formula">
+            Termo geral: aₙ = a₁ + (n - 1) · r
+            Soma dos termos: Sₙ = (a₁ + aₙ) · n / 2
+        </div>
+        <p><strong>Exemplo:</strong> Na sequência 7, 9, 11, 13, ... a razão é r=2. O 10º termo é a₁₀ = 7 + (10-1)·2 = 7 + 18 = 25.</p>
+
+        <h3>1.4. Progressões Geométricas (PG)</h3>
+        <p>Uma PG é uma sequência onde cada termo é obtido multiplicando o anterior por uma constante (razão "q").</p>
+        <div class="formula">
+            Termo geral: aₙ = a₁ · q^(n-1)
+            Soma dos termos: Sₙ = a₁ · (qⁿ - 1) / (q - 1)
+        </div>
+        <p><strong>Exemplo:</strong> O desmatamento cresce 10% ao ano. Se em 2020 foi de 6408 km², em 2021 será 6408 · 1,10 = 7048,8 km².</p>
+
+        <h2>Módulo 2: Geometria</h2>
+
+        <h3>2.1. Áreas e Perímetros</h3>
+        <table>
+            <tr><th>Figura</th><th>Área</th><th>Perímetro</th></tr>
+            <tr><td>Quadrado</td><td>A = l²</td><td>P = 4l</td></tr>
+            <tr><td>Retângulo</td><td>A = b · h</td><td>P = 2(b + h)</td></tr>
+            <tr><td>Triângulo</td><td>A = (b · h) / 2</td><td>P = a + b + c</td></tr>
+            <tr><td>Círculo</td><td>A = π · r²</td><td>P = 2πr</td></tr>
+            <tr><td>Trapézio</td><td>A = (B + b) · h / 2</td><td>P = soma dos lados</td></tr>
+        </table>
+
+        <div class="box">
+            <div class="box-title">📌 Exemplo: Dormentes Ferroviários</div>
+            <p>Um dormente prismático mede 2m de comprimento, 0,24m de largura e 0,16m de altura. Seu volume é:</p>
+            <div class="formula">
+                V = 2 · 0,24 · 0,16 = 0,0768 m³
+            </div>
+            <p>Para 1 km de ferrovia, são usados 1600 dormentes. O volume total de madeira é:</p>
+            <div class="formula">
+                V_total = 1600 · 0,0768 = 122,88 m³
+            </div>
+        </div>
+
+        <h3>2.2. Volume de Sólidos</h3>
+        <table>
+            <tr><th>Sólido</th><th>Fórmula do Volume</th></tr>
+            <tr><td>Cubo</td><td>V = a³</td></tr>
+            <tr><td>Paralelepípedo</td><td>V = a · b · c</td></tr>
+            <tr><td>Cilindro</td><td>V = π · r² · h</td></tr>
+            <tr><td>Cone</td><td>V = (π · r² · h) / 3</td></tr>
+            <tr><td>Esfera</td><td>V = (4/3) · π · r³</td></tr>
+        </table>
+
+        <h3>2.3. Teorema de Pitágoras</h3>
+        <p>Em um triângulo retângulo, o quadrado da hipotenusa é igual à soma dos quadrados dos cateto.</p>
+        <div class="formula">
+            a² = b² + c²
+            <span class="comment">// Onde "a" é a hipotenusa e "b", "c" são os catetos.</span>
+        </div>
+        <p><strong>Exemplo:</strong> Se um caçador caminha 6 km para leste e 8 km para norte, a distância em linha reta é:</p>
+        <div class="formula">
+            d² = 6² + 8² = 36 + 64 = 100
+            d = √100 = 10 km
+        </div>
+
+        <h2>Módulo 3: Física - Mecânica</h2>
+
+        <h3>3.1. Cinemática: Queda Livre</h3>
+        <p>Um corpo em queda livre (sem resistência do ar) está sujeito apenas à aceleração da gravidade (g ≈ 10 m/s²).</p>
+        <div class="formula">
+            <span class="comment">// Equações da queda livre:</span>
+            v = g · t          <span class="comment">// Velocidade em função do tempo</span>
+            h = (g · t²) / 2   <span class="comment">// Altura em função do tempo</span>
+            v² = 2 · g · h     <span class="comment">// Equação de Torricelli</span>
+            v = √(2 · g · H)   <span class="comment">// Velocidade de impacto</span>
+        </div>
+
+        <div class="box">
+            <div class="box-title">📌 Exemplo: Queda do Ouriço da Castanheira</div>
+            <p>Um ouriço cai de uma altura de 45 metros. Qual a velocidade ao atingir o chão?</p>
+            <div class="formula">
+                v = √(2 · 10 · 45)
+                v = √900
+                v = 30 m/s
+            </div>
+        </div>
+
+        <h3>3.2. Movimento Uniforme (MU)</h3>
+        <p>No MU, a velocidade é constante e a função horária é:</p>
+        <div class="formula">
+            S = S₀ + v · t
+            <span class="comment">// S = posição final, S₀ = posição inicial, v = velocidade, t = tempo</span>
+        </div>
+        <p><strong>Exemplo:</strong> Um trator se move a 10 km/h. Em quanto tempo percorre o perímetro de uma plantação quadrada de 500m de lado?</p>
+        <div class="formula">
+            Perímetro = 4 · 500 = 2000 m = 2 km
+            t = S / v = 2 / 10 = 0,2 h = 12 minutos
+        </div>
+
+        <h3>3.3. Movimento Uniformemente Variado (MUV)</h3>
+        <p>No MUV, a aceleração é constante:</p>
+        <div class="formula">
+            v = v₀ + a · t
+            S = S₀ + v₀ · t + (a · t²) / 2
+            v² = v₀² + 2 · a · ΔS
+        </div>
+
+        <h3>3.4. Leis de Newton</h3>
+        <ul>
+            <li><strong>1ª Lei (Inércia):</strong> Um corpo em repouso tende a permanecer em repouso; um corpo em movimento tende a permanecer em movimento, a menos que uma força resultante atue sobre ele.</li>
+            <li><strong>2ª Lei:</strong> F = m · a (Força = massa × aceleração)</li>
+            <li><strong>3ª Lei:</strong> Toda ação gera uma reação de igual intensidade, mesma direção e sentido oposto.</li>
+        </ul>
+
+        <h2>Módulo 4: Física - Eletricidade</h2>
+
+        <h3>4.1. Lei de Ohm</h3>
+        <p>A Lei de Ohm relaciona tensão (U), corrente (i) e resistência (R):</p>
+        <div class="formula">
+            U = R · i
+            <span class="comment">// U = diferença de potencial (Volts)</span>
+            <span class="comment">// R = resistência elétrica (Ohms)</span>
+            <span class="comment">// i = corrente elétrica (Ampères)</span>
+        </div>
+
+        <div class="box">
+            <div class="box-title">📌 Exemplo: Sinal Elétrico das Plantas</div>
+            <p>Na planta carnívora Dioneia, a resistência elétrica do caule pode ser medida. Se U = 1×10⁻¹ V e i = 2×10⁻⁸ A, qual é a resistência?</p>
+            <div class="formula">
+                R = U / i
+                R = (1×10⁻¹) / (2×10⁻⁸)
+                R = 0,5×10⁷
+                R = 5×10⁶ Ohms
+            </div>
+        </div>
+
+        <h3>4.2. Potência Elétrica</h3>
+        <div class="formula">
+            P = U · i
+            P = R · i²
+            P = U² / R
+            <span class="comment">// P = potência (Watts)</span>
+        </div>
+
+        <h3>4.3. Fator de Capacidade de Usinas Hidrelétricas</h3>
+        <p>O fator de capacidade (η) é a razão entre a potência real gerada e a potência instalada:</p>
+        <div class="formula">
+            η = ΔP_u / ΔP_i
+            <span class="comment">// ΔP_u = potência útil gerada</span>
+            <span class="comment">// ΔP_i = potência instalada</span>
+        </div>
+        <p><strong>Exemplo:</strong> A Usina de Balbina tem potência instalada de 250 MW, mas gera apenas 80 MW. Seu fator de capacidade é:</p>
+        <div class="formula">
+            η = 80 / 250 = 0,32
+        </div>
+
+        <h2>Módulo 5: Estatística e Probabilidade</h2>
+
+        <h3>5.1. Medidas de Tendência Central</h3>
+        <ul>
+            <li><strong>Média:</strong> Soma dos valores dividida pelo número de valores.</li>
+            <li><strong>Mediana:</strong> Valor central quando os dados estão ordenados.</li>
+            <li><strong>Moda:</strong> Valor que aparece com mais frequência.</li>
+        </ul>
+
+        <h3>5.2. Amplitude Total</h3>
+        <p>A amplitude total é a diferença entre o maior e o menor valor de um conjunto de dados.</p>
+        <div class="box">
+            <div class="box-title">📌 Exemplo: Desmatamento na Amazônia (2008-2022)</div>
+            <p>Maior valor: 9069 km² (2022). Menor valor: 1008 km² (2013).</p>
+            <div class="formula">
+                Amplitude = 9069 - 1008 = 8061 km²
+            </div>
+        </div>
+
+        <h3>5.3. Probabilidade</h3>
+        <div class="formula">
+            P(A) = número de casos favoráveis / número de casos possíveis
+        </div>
+        <p><strong>Exemplo:</strong> Em um sorteio de 50 números, qual a probabilidade de tirar um múltiplo de 10? Casos favoráveis: 5 (10, 20, 30, 40, 50). P = 5/50 = 1/10 = 10%.</p>
+
+        <h3>5.4. Análise Combinatória</h3>
+        <div class="formula">
+            Arranjo: A(n,p) = n! / (n-p)!
+            Combinação: C(n,p) = n! / [p! · (n-p)!]
+            Permutação: P(n) = n!
+        </div>
+        <p><strong>Exemplo:</strong> Quantas siglas de 3 letras diferentes podem ser formadas com as letras da palavra ABACAXI? A palavra tem 7 letras (A, B, A, C, A, X, I), mas com repetições. Considerando apenas as letras distintas A, B, C, X, I (5 letras): A(5,3) = 5!/(5-3)! = 5!/2! = 120/2 = 60 siglas.</p>
+
+        <a href="index.html" class="back-link">← Voltar ao Início</a>
+    </div>
+</body>
+</html>
