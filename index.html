@@ -3,264 +3,603 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mercado Afiliado</title>
+    <title>GUGU Estudos - Plataforma Completa</title>
     <style>
-        :root { --ml-yellow: #ffe600; --ml-bg: #ebebeb; --ml-text: #333333; --ml-text-light: #666666; --ml-blue: #3483fa; --ml-green: #00a650; }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: -apple-system, sans-serif; background-color: var(--ml-bg); color: var(--ml-text); }
-        
-        header { background-color: var(--ml-yellow); padding: 8px 10px; position: sticky; top: 0; z-index: 100; box-shadow: 0 1px 1px rgba(0,0,0,0.1); }
-        .header-content { max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
-        .logo-img { height: 45px; }
-        .search-bar { background: #fff; padding: 10px 15px; border-radius: 2px; box-shadow: 0 1px 2px 0 rgba(0,0,0,.2); font-size: 16px; color: #999; }
-        
-        main { max-width: 1200px; margin: 0 auto; padding: 20px 10px 80px 10px; }
-        h2 { font-size: 24px; font-weight: 400; margin-bottom: 24px; color: var(--ml-text-light); }
-        .products-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
-        .product-card { background: #fff; border-radius: 4px; overflow: hidden; box-shadow: 0 1px 2px 0 rgba(0,0,0,.12); cursor: pointer; text-decoration: none; color: inherit; display: flex; flex-direction: column; }
-        .product-card:hover { box-shadow: 0 7px 16px 0 rgba(0,0,0,.1); }
-        .img-wrapper { width: 100%; aspect-ratio: 1; position: relative; border-bottom: 1px solid #eee; overflow: hidden; }
-        .img-wrapper img { width: 100%; height: 100%; object-fit: contain; padding: 15px; }
-        .hover-desc { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(52, 131, 250, 0.95); color: #fff; padding: 20px; font-size: 14px; display: flex; align-items: center; justify-content: center; text-align: center; opacity: 0; transition: opacity 0.3s; pointer-events: none; }
-        .product-card:hover .hover-desc { opacity: 1; }
-        .info { padding: 12px 16px; }
-        .price { font-size: 24px; }
-        .frete { color: var(--ml-green); font-size: 14px; font-weight: 600; display: block; }
-        .title { font-size: 14px; color: var(--ml-text-light); margin-top: 4px; }
-        
-        .float-btn { position: fixed; width: 50px; height: 50px; border-radius: 50%; display: flex; justify-content: center; align-items: center; box-shadow: 0 4px 10px rgba(0,0,0,0.3); z-index: 1000; cursor: pointer; border: none; }
-        .btn-admin { bottom: 20px; left: 20px; background: #fff; color: #666; }
-        .btn-tiktok { bottom: 20px; right: 20px; background: #000; color: #fff; text-decoration: none; }
-        .float-btn svg { width: 24px; height: 24px; fill: currentColor; }
-        
-        .modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 2000; display: none; align-items: center; justify-content: center; }
-        .modal-overlay.active { display: flex; }
-        .modal { background: #fff; border-radius: 8px; padding: 30px; max-width: 600px; width: 90%; max-height: 90vh; overflow-y: auto; }
-        .form-group { margin-bottom: 16px; }
-        label { display: block; margin-bottom: 6px; font-size: 13px; font-weight: 600; color: #666; }
-        input, textarea { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 6px; font-size: 14px; }
-        button { background: #3483fa; color: white; border: none; border-radius: 6px; padding: 12px 20px; font-weight: 600; cursor: pointer; width: 100%; font-size: 15px; }
-        .btn-secondary { background: #f0f0f0; color: #333; margin-top: 10px; }
-        .btn-remover { background: #ffe6e6; color: #cc0000; width: auto; padding: 8px 12px; font-size: 12px; }
-        .item-produto { display: flex; align-items: center; justify-content: space-between; padding: 15px; border: 1px solid #eee; border-radius: 6px; margin-bottom: 10px; }
-        .item-info { display: flex; align-items: center; gap: 15px; flex: 1; }
-        .item-info img { width: 60px; height: 60px; object-fit: contain; border-radius: 4px; }
-        .item-detalhes h4 { font-size: 14px; margin-bottom: 4px; }
-        .item-detalhes p { font-size: 13px; color: #00a650; font-weight: 600; }
-        
-        @media (min-width: 768px) { 
-            .header-content { flex-direction: row; align-items: center; } 
-            .search-bar { flex: 1; margin-left: 30px; } 
-            .products-grid { grid-template-columns: repeat(4, 1fr); gap: 16px; } 
+        :root {
+            --bg: #0a0a0f;
+            --panel: #14141c;
+            --card: #1c1c26;
+            --card-hover: #232333;
+            --primary: #7c3aed;
+            --primary-hover: #8b5cf6;
+            --primary-glow: rgba(124, 58, 237, 0.3);
+            --accent: #06b6d4;
+            --accent-glow: rgba(6, 182, 212, 0.2);
+            --text: #f3f4f6;
+            --muted: #9ca3af;
+            --border: #2d2d3d;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --font-main: 'Segoe UI', system-ui, -apple-system, Roboto, sans-serif;
         }
-        @media (min-width: 1024px) { 
-            .products-grid { grid-template-columns: repeat(5, 1fr); } 
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: var(--font-main);
+            line-height: 1.7;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg); }
+        ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--primary); }
+
+        /* MARCA D'ÁGUA */
+        .watermark {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            font-size: 5rem;
+            font-weight: 900;
+            color: rgba(124, 58, 237, 0.05);
+            pointer-events: none;
+            user-select: none;
+            z-index: 0;
+            transform: rotate(-15deg);
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            font-family: var(--font-main);
+        }
+
+        /* CONTAINER */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            text-align: center;
+            padding: 60px 20px 40px;
+            margin-bottom: 40px;
+            border-bottom: 1px solid var(--border);
+            position: relative;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
+            border-radius: 2px;
+        }
+        .hero-badge {
+            display: inline-block;
+            background: rgba(124, 58, 237, 0.15);
+            border: 1px solid rgba(124, 58, 237, 0.3);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            color: var(--primary-hover);
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #fff 0%, var(--primary) 50%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -1px;
+        }
+        .hero p {
+            font-size: 1.15rem;
+            color: var(--muted);
+            max-width: 700px;
+            margin: 0 auto 30px;
+            text-align: center;
+        }
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+        .stat-item {
+            text-align: center;
+        }
+        .stat-item .number {
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--primary);
+            line-height: 1;
+        }
+        .stat-item .label {
+            font-size: 0.8rem;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 5px;
+        }
+
+        /* SEÇÃO DE MATÉRIAS */
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin: 60px 0 30px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .section-title::before {
+            content: '';
+            width: 5px;
+            height: 30px;
+            background: linear-gradient(180deg, var(--primary), var(--accent));
+            border-radius: 3px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        /* CARDS DE MATÉRIA */
+        .card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 30px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+        }
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+        .card:hover {
+            transform: translateY(-8px);
+            border-color: var(--primary);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 0 30px var(--primary-glow);
+            background: var(--card-hover);
+        }
+        .card:hover::before {
+            opacity: 1;
+        }
+        .card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+        .card-title {
+            font-size: 1.3rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            color: var(--text);
+        }
+        .card-description {
+            color: var(--muted);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+        .card-topics {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 20px;
+        }
+        .topic-tag {
+            background: rgba(124, 58, 237, 0.12);
+            color: var(--primary-hover);
+            font-size: 0.7rem;
+            padding: 4px 10px;
+            border-radius: 50px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+        .card-btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background: var(--primary);
+            color: white;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-align: center;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        .card:hover .card-btn {
+            background: var(--primary-hover);
+            box-shadow: 0 4px 15px var(--primary-glow);
+        }
+
+        /* CARD DESTAQUE (PROVA) */
+        .card-prova {
+            grid-column: 1 / -1;
+            background: linear-gradient(135deg, rgba(124, 58, 237, 0.15), rgba(6, 182, 212, 0.1));
+            border: 2px solid var(--primary);
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 30px;
+            padding: 40px;
+        }
+        .card-prova:hover {
+            box-shadow: 0 20px 50px var(--primary-glow);
+        }
+        .card-prova .card-icon {
+            font-size: 4rem;
+            margin-bottom: 0;
+        }
+        .card-prova-content {
+            flex: 1;
+        }
+        .card-prova .card-title {
+            font-size: 1.8rem;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .card-prova .card-description {
+            font-size: 1rem;
+        }
+        .card-prova .card-btn {
+            padding: 16px 36px;
+            font-size: 1.1rem;
+            background: linear-gradient(135deg, var(--primary), #6d28d9);
+            box-shadow: 0 4px 20px var(--primary-glow);
+        }
+
+        /* DISTRIBUIÇÃO DA PROVA */
+        .prova-distribuicao {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 15px;
+        }
+        .dist-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(0,0,0,0.3);
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            color: var(--muted);
+            border: 1px solid var(--border);
+        }
+        .dist-item .qtd {
+            font-weight: 800;
+            color: var(--primary);
+            font-size: 1rem;
+        }
+
+        /* SEÇÃO DE COMO USAR */
+        .how-to-use {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 40px;
+            margin: 60px 0;
+        }
+        .how-to-use h3 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+        }
+        .step {
+            display: flex;
+            gap: 15px;
+            align-items: flex-start;
+        }
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+            color: white;
+        }
+        .step-content h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+            color: var(--text);
+        }
+        .step-content p {
+            font-size: 0.85rem;
+            color: var(--muted);
+            margin: 0;
+            text-align: left;
+        }
+
+        /* FOOTER */
+        .footer {
+            text-align: center;
+            padding: 40px 20px;
+            border-top: 1px solid var(--border);
+            margin-top: 60px;
+            color: var(--muted);
+            font-size: 0.85rem;
+        }
+        .footer .brand {
+            font-size: 1.5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+        }
+
+        /* BOTÃO FLUTUANTE */
+        .float-btn {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 14px 24px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            cursor: pointer;
+            box-shadow: 0 4px 20px var(--primary-glow);
+            transition: all 0.3s;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+        .float-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px var(--primary-glow);
+            background: var(--primary-hover);
+        }
+
+        /* RESPONSIVIDADE */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            .hero p { font-size: 1rem; }
+            .hero-stats { gap: 25px; }
+            .stat-item .number { font-size: 1.5rem; }
+            .card-prova {
+                flex-direction: column;
+                text-align: center;
+                padding: 30px 20px;
+            }
+            .card-prova .card-icon { font-size: 3rem; }
+            .card-prova .card-title { font-size: 1.4rem; }
+            .prova-distribuicao { justify-content: center; }
+            .section-title { font-size: 1.4rem; }
+            .how-to-use { padding: 25px; }
+            .watermark { font-size: 2.5rem; }
+            .float-btn { bottom: 20px; left: 20px; padding: 12px 20px; font-size: 0.8rem; }
+        }
+        @media (max-width: 480px) {
+            .hero h1 { font-size: 1.8rem; }
+            .hero-badge { font-size: 0.7rem; padding: 6px 14px; }
+            .grid { grid-template-columns: 1fr; }
+            .card { padding: 20px; }
+            .container { padding: 20px 15px; }
         }
     </style>
 </head>
 <body>
+    <div class="watermark">GUGU</div>
 
-    <header>
-        <div class="header-content">
-            <img src="https://logopng.com.br/logos/mercado-livre-87.svg?dpl=dpl_83xWKUBiCCc88zqvgK1XNSG8JXgj" alt="Mercado Livre" class="logo-img">
-            <div class="search-bar">Buscar produtos, marcas e muito mais…</div>
-        </div>
-    </header>
-
-    <main>
-        <h2>Baseado na sua última visita</h2>
-        <div class="products-grid" id="produtos"></div>
-    </main>
-
-    <!-- Modal Admin -->
-    <div class="modal-overlay" id="modalAdmin">
-        <div class="modal">
-            <h3>Painel de Controle</h3>
+    <div class="container">
+        <!-- HERO SECTION -->
+        <div class="hero">
+            <div class="hero-badge">⚡ Plataforma de Estudos Premium</div>
+            <h1>Domine o Conteúdo.<br>Conquiste sua Vaga.</h1>
+            <p>Materiais de estudo completos, aprofundados e baseados nas provas oficiais da ETEC. Tudo o que você precisa para o Vestibulinho, organizado em um só lugar.</p>
             
-            <div id="login-area">
-                <div class="form-group">
-                    <label>Senha de Acesso</label>
-                    <input type="password" id="senha" placeholder="Digite sua senha">
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <div class="number">5</div>
+                    <div class="label">Matérias</div>
                 </div>
-                <button onclick="entrar()">Acessar Painel</button>
+                <div class="stat-item">
+                    <div class="number">50+</div>
+                    <div class="label">Tópicos</div>
+                </div>
+                <div class="stat-item">
+                    <div class="number">50</div>
+                    <div class="label">Questões na Prova</div>
+                </div>
+                <div class="stat-item">
+                    <div class="number">100%</div>
+                    <div class="label">Gratuito</div>
+                </div>
             </div>
-            
-            <div id="admin-area" style="display: none;">
-                <h3 style="font-size: 16px; margin-top: 20px;">Adicionar Novo Produto</h3>
-                <form id="form-add" onsubmit="adicionar(event)">
-                    <div class="form-group">
-                        <label>Nome do Produto</label>
-                        <input type="text" id="nome" required placeholder="Ex: Smartphone Samsung...">
+        </div>
+
+        <!-- SEÇÃO DE MATÉRIAS -->
+        <h2 class="section-title">📚 Materiais de Estudo</h2>
+        
+        <div class="grid">
+            <!-- MATEMÁTICA E FÍSICA -->
+            <a href="mat.html" class="card">
+                <span class="card-icon">📐</span>
+                <h3 class="card-title">Matemática e Física</h3>
+                <p class="card-description">Porcentagem, regra de três, PA, PG, geometria, cinemática, leis de Newton, eletricidade e estatística aplicados ao contexto amazônico.</p>
+                <div class="card-topics">
+                    <span class="topic-tag">Porcentagem</span>
+                    <span class="topic-tag">Geometria</span>
+                    <span class="topic-tag">Cinemática</span>
+                    <span class="topic-tag">Eletricidade</span>
+                    <span class="topic-tag">Estatística</span>
+                </div>
+                <span class="card-btn">Acessar Material →</span>
+            </a>
+
+            <!-- CIÊNCIAS E BIOLOGIA -->
+            <a href="ciencias.html" class="card">
+                <span class="card-icon">🔬</span>
+                <h3 class="card-title">Ciências e Biologia</h3>
+                <p class="card-description">Ecologia, biomas, botânica, zoologia, saúde, doenças tropicais, genética e evolução. Entenda a biodiversidade amazônica.</p>
+                <div class="card-topics">
+                    <span class="topic-tag">Ecologia</span>
+                    <span class="topic-tag">Botânica</span>
+                    <span class="topic-tag">Zoologia</span>
+                    <span class="topic-tag">Saúde</span>
+                    <span class="topic-tag">Genética</span>
+                </div>
+                <span class="card-btn">Acessar Material →</span>
+            </a>
+
+            <!-- PORTUGUÊS E LITERATURA -->
+            <a href="portugues.html" class="card">
+                <span class="card-icon">📖</span>
+                <h3 class="card-title">Português e Literatura</h3>
+                <p class="card-description">Gramática, classes de palavras, sintaxe, figuras de linguagem, interpretação de texto e literatura brasileira.</p>
+                <div class="card-topics">
+                    <span class="topic-tag">Gramática</span>
+                    <span class="topic-tag">Figuras de Linguagem</span>
+                    <span class="topic-tag">Interpretação</span>
+                    <span class="topic-tag">Literatura</span>
+                </div>
+                <span class="card-btn">Acessar Material →</span>
+            </a>
+
+            <!-- QUÍMICA -->
+            <a href="quimica.html" class="card">
+                <span class="card-icon">🧪</span>
+                <h3 class="card-title">Química</h3>
+                <p class="card-description">Química geral, tabela periódica, ligações, funções inorgânicas, química orgânica, ambiental e separação de misturas.</p>
+                <div class="card-topics">
+                    <span class="topic-tag">Tabela Periódica</span>
+                    <span class="topic-tag">Ligações</span>
+                    <span class="topic-tag">Orgânica</span>
+                    <span class="topic-tag">Ambiental</span>
+                </div>
+                <span class="card-btn">Acessar Material →</span>
+            </a>
+
+            <!-- ATUALIDADES E GEOPOLÍTICA -->
+            <a href="atualidades.html" class="card">
+                <span class="card-icon">🌍</span>
+                <h3 class="card-title">Atualidades e Geopolítica</h3>
+                <p class="card-description">Amazônia, meio ambiente, geopolítica, questões sociais contemporâneas, história da ocupação e economia verde.</p>
+                <div class="card-topics">
+                    <span class="topic-tag">Amazônia</span>
+                    <span class="topic-tag">Meio Ambiente</span>
+                    <span class="topic-tag">Geopolítica</span>
+                    <span class="topic-tag">Sociedade</span>
+                </div>
+                <span class="card-btn">Acessar Material →</span>
+            </a>
+
+            <!-- PROVA FINAL (DESTAQUE) -->
+            <a href="prova.html" class="card card-prova">
+                <span class="card-icon">📝</span>
+                <div class="card-prova-content">
+                    <h3 class="card-title">Prova Final - 50 Questões</h3>
+                    <p class="card-description">Teste seus conhecimentos com uma avaliação completa baseada nas provas oficiais da ETEC. Questões embaralhadas a cada tentativa!</p>
+                    <div class="prova-distribuicao">
+                        <div class="dist-item"><span class="qtd">20</span> Matemática</div>
+                        <div class="dist-item"><span class="qtd">20</span> Português</div>
+                        <div class="dist-item"><span class="qtd">10</span> Ciências</div>
+                        <div class="dist-item"><span class="qtd">5</span> Atualidades</div>
+                        <div class="dist-item"><span class="qtd">5</span> Química</div>
                     </div>
-                    <div class="form-group">
-                        <label>Descrição</label>
-                        <textarea id="descricao" rows="3" required placeholder="Fale sobre os benefícios..."></textarea>
+                </div>
+                <span class="card-btn">Iniciar Prova →</span>
+            </a>
+        </div>
+
+        <!-- COMO USAR -->
+        <div class="how-to-use">
+            <h3>🚀 Como Aproveitar ao Máximo</h3>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h4>Estude os Materiais</h4>
+                        <p>Comece pelas matérias que você tem mais dificuldade. Cada material é completo e aprofundado.</p>
                     </div>
-                    <div class="form-group">
-                        <label>Valor Exato (R$)</label>
-                        <input type="number" step="0.01" id="valor" required placeholder="Ex: 1599.90">
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h4>Faça Anotações</h4>
+                        <p>Use as fórmulas, tabelas e exemplos como base para seus resumos pessoais.</p>
                     </div>
-                    <div class="form-group">
-                        <label>Link de Afiliado (URL)</label>
-                        <input type="url" id="link" required placeholder="https://...">
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h4>Teste seus Conhecimentos</h4>
+                        <p>Após estudar, faça a Prova Final para identificar pontos fracos.</p>
                     </div>
-                    <div class="form-group">
-                        <label>Link da Imagem (URL)</label>
-                        <input type="url" id="imagem" required placeholder="https://...">
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h4>Revise e Repita</h4>
+                        <p>A prova embaralha as questões a cada tentativa. Repita até dominar 100% do conteúdo.</p>
                     </div>
-                    <button type="submit">Cadastrar Produto</button>
-                </form>
-                
-                <h3 style="font-size: 16px; margin-top: 30px;">Produtos Cadastrados</h3>
-                <div id="lista-produtos"></div>
-                
-                <button class="btn-secondary" onclick="fecharModal()">Fechar Painel</button>
+                </div>
             </div>
+        </div>
+
+        <!-- FOOTER -->
+        <div class="footer">
+            <div class="brand">GUGU</div>
+            <p>Plataforma de Estudos Premium • Baseada nas provas oficiais da ETEC</p>
+            <p style="margin-top: 10px; font-size: 0.75rem;">© 2024 GUGU Estudos. Todos os direitos reservados.</p>
         </div>
     </div>
 
-    <!-- Botões Flutuantes -->
-    <button class="float-btn btn-admin" onclick="abrirModal()">
-        <svg viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zM9 6c0-1.66 1.34-3 3-3s3 1.34 3 3v2H9V6zm9 14H6V10h12v10zm-6-3c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z"/></svg>
-    </button>
-    <a href="https://tiktok.com/@shuler.o.gato" class="float-btn btn-tiktok" target="_blank">
-        <svg viewBox="0 0 448 512"><path d="M448 209.9a210.1 210.1 0 0 1 -122.8-39.3V349.4A162.6 162.6 0 1 1 185 188.3V278.2a74.6 74.6 0 1 0 52.2 71.2V0l88 0a121.2 121.2 0 0 0 1.9 22.2h0A122.2 122.2 0 0 0 381 102.4a121.4 121.4 0 0 0 67 20.1z"/></svg>
+    <!-- BOTÃO FLUTUANTE -->
+    <a href="prova.html" class="float-btn">
+        📝 Ir para a Prova
     </a>
-
-    <script>
-        // ============================================
-        // COLOQUE SEUS PRODUTOS AQUI
-        // ============================================
-        const PRODUTOS = [
-            {
-                nome: "Furadeira E Parafusadeira Impacto",
-                descricao: "Marca The Black Tools",
-                valor: 140.60,
-                link: "https://meli.la/2VAsKrd",
-                imagem: "https://http2.mlstatic.com/D_NQ_NP_2X_629064-MLA114933297788_082026-F.webp"
-            },
-            {
-                nome: "Kit 2 Top Academia Puma Treino Fitness",
-                descricao: "Esportivo, Algodão",
-                valor: 98.99,
-                link: "https://meli.la/2oBoqVd",
-                imagem: "https://http2.mlstatic.com/D_NQ_NP_2X_908189-MLB81180363836_122024-F-kit-2-top-academia-puma-treino-fitness-esportivo-algodo.webp"
-            },
-           
-        ];
-        // ============================================
-        // FIM DA CONFIGURAÇÃO DE PRODUTOS
-        // ============================================
-        
-        function formatarPreco(valor) {
-            return Number(valor).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-        }
-        
-        function carregarProdutos() {
-            const container = document.getElementById('produtos');
-            container.innerHTML = '';
-            
-            PRODUTOS.forEach((p) => {
-                container.innerHTML += `
-                    <a class="product-card" href="${p.link}" target="_blank">
-                        <div class="img-wrapper">
-                            <img src="${p.imagem}" alt="${p.nome}" onerror="this.src='https://via.placeholder.com/300x300?text=Sem+Imagem'">
-                            <div class="hover-desc">${p.descricao}</div>
-                        </div>
-                        <div class="info">
-                            <span class="price">${formatarPreco(p.valor)}</span>
-                            <span class="frete">Frete grátis</span>
-                            <span class="title">${p.nome}</span>
-                        </div>
-                    </a>
-                `;
-            });
-        }
-        
-        function abrirModal() {
-            document.getElementById('modalAdmin').classList.add('active');
-        }
-        
-        function fecharModal() {
-            document.getElementById('modalAdmin').classList.remove('active');
-            document.getElementById('login-area').style.display = 'block';
-            document.getElementById('admin-area').style.display = 'none';
-            document.getElementById('senha').value = '';
-        }
-        
-        function entrar() {
-            const senha = document.getElementById('senha').value;
-            if (senha === 'marcus') {
-                document.getElementById('login-area').style.display = 'none';
-                document.getElementById('admin-area').style.display = 'block';
-                carregarListaAdmin();
-            } else {
-                alert('Acesso negado. Senha incorreta.');
-            }
-        }
-        
-        function adicionar(e) {
-            e.preventDefault();
-            
-            const novo = {
-                nome: document.getElementById('nome').value,
-                descricao: document.getElementById('descricao').value,
-                valor: parseFloat(document.getElementById('valor').value),
-                link: document.getElementById('link').value,
-                imagem: document.getElementById('imagem').value
-            };
-            
-            PRODUTOS.push(novo);
-            
-            e.target.reset();
-            carregarListaAdmin();
-            carregarProdutos();
-            alert("Produto adicionado! Lembre-se de editar o código HTML para salvar permanentemente.");
-        }
-        
-        function remover(index) {
-            if (confirm('Tem certeza que deseja apagar este produto?')) {
-                PRODUTOS.splice(index, 1);
-                carregarListaAdmin();
-                carregarProdutos();
-                alert("Produto removido! Lembre-se de editar o código HTML para salvar permanentemente.");
-            }
-        }
-        
-        function carregarListaAdmin() {
-            const container = document.getElementById('lista-produtos');
-            
-            if (PRODUTOS.length === 0) {
-                container.innerHTML = '<p style="text-align: center; color: #999;">Nenhum produto cadastrado.</p>';
-                return;
-            }
-            
-            container.innerHTML = '';
-            
-            PRODUTOS.forEach((p, index) => {
-                container.innerHTML += `
-                    <div class="item-produto">
-                        <div class="item-info">
-                            <img src="${p.imagem}" alt="Produto" onerror="this.src='https://via.placeholder.com/60x60?text=Sem+Imagem'">
-                            <div class="item-detalhes">
-                                <h4>${p.nome}</h4>
-                                <p>${formatarPreco(p.valor)}</p>
-                            </div>
-                        </div>
-                        <button class="btn-remover" onclick="remover(${index})">Remover</button>
-                    </div>
-                `;
-            });
-        }
-        
-        document.getElementById('modalAdmin').addEventListener('click', function(e) {
-            if (e.target === this) {
-                fecharModal();
-            }
-        });
-        
-        // Carregar produtos ao iniciar
-        carregarProdutos();
-    </script>
 </body>
 </html>
